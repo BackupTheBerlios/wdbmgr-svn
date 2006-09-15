@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="javadoc">
+		<delete dir="build/deploy/doc/javadoc" />
+    <target name="javadoc">
+        <javadoc destdir="build/deploy/doc/javadoc" access="public" use="true" notree="false" nonavbar="false" noindex="false" splitindex="true" author="true" version="true" nodeprecatedlist="false" nodeprecated="false" packagenames="com.gele.tools.wow.wdbmanager.inout" sourcefiles="src/java/com/gele/tools/wow/wdbmanager/api/WoWWDBManager_I.java,src-base/java/com/gele/base/dbaccess/DTO_Interface.java" sourcepath="src-base/java;test/java;src/java" classpath="N:\Quell\jar-repository\hsqldb\hsqldb_1_7_3_3\lib\hsqldb.jar;N:\Quell\jar-repository\xerces\xerces-2_6_2\xml-apis.jar;N:\Quell\jar-repository\logging-log4j-1.2.9\dist\lib\log4j-1.2.9.jar;N:\Quell\jar-repository\mysql\mysql-connector-java-3.1.7\mysql-connector-java-3.1.7-bin.jar;N:\Quell\jar-repository\xerces\xerces-2_6_2\xercesImpl.jar;N:\Quell\jar-repository\jython\jython-2.1\jython.jar;N:\Quell\jar-repository\commons-cli-1.0\commons-cli-1.0.jar;N:\Quell\jar-repository\castor\castor-0.9.6\castor-0.9.6.jar;build/bin;N:\Quell\jar-repository\kunststoff-2_0_2\kunststoff.jar;N:\Quell\jar-repository\commons-logging-1.0.4\commons-logging.jar" doctitle="WoWWDBManager - lousy.kizura@gmail.com"/>
+    </target>
+</project>

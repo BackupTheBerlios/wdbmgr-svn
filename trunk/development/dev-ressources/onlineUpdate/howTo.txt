@@ -1,0 +1,55 @@
+How to make an online update
+----------------------------
+
+The WDBearManager has the ability to do online updates.
+
+This is done using a simple webserver (http).
+
+
+1. Check variable VERSION_INFO in file WDBearManager (com.gele.tools.wow.wdbearmanager)
+   This String contains the version of the application
+   
+2. File "wdbearmanager_update.properties" (located in "development/src/java")
+
+Example:
+
+<quote>
+#
+# Config file for the WDBManager "search for update" functionality
+#
+# author    $Author: gleibrock $ <a href="mailto:lousy.kizura@gmail.com">Kiz Urazgubi.</a>
+# version   $Rev: 178 $
+#
+# kizura zgabi, april 2005
+#
+#
+# latest change: 2005-08-18
+# changed host from "wowhacker.wo.funpic.de" to "uplink.up.funpic.de"
+
+checkupdate=http://uplink.up.funpic.de/wdbearmanager_version.txt
+visitsite=http://wdbmgr.berlios.de/
+
+</quote>
+
+checkupdate
+This file is downloaded and compared to the internal version of VERSION_INFO
+
+visitsite
+Tells the user to visit this site for more information.
+
+
+3. File "wdbearmanager_version.txt"
+
+<quote>
+>> WDBManager 2005-09-18 by kizura // RC-1 PRE-13 (die letzte troete) <<
+http://wowhacker.wo.funpic.de/wdbmanager_RC-1-pre13-CORE.zip
+</quote>
+
+It consists just of two lines:
+1. Version name
+2. What to download, if the internal version is not like the one on the webserver.
+
+
+gl, hf
+kizura
+lousy.kizura@gmail.com

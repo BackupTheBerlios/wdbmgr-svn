@@ -1,0 +1,90 @@
+Dein Download-Link:
+http://rapidshare.de/files/874525/wdbmanager.zip.html
+l�schlink
+http://rapidshare.de/files/874525/wdbmanager.zip?killcode=3386367256
+
+--
+
+PRE-2 (2005-03-17)
+Dein Download-Link:	http://rapidshare.de/files/902587/wdbmanager-PRE2.zip.html
+Dein L�sch-Link:	http://rapidshare.de/files/902587/wdbmanager-PRE2.zip?killcode=3388131925
+
+--
+
+PRE-3 ((2005-03-18))
+Dein Download-Link:	http://rapidshare.de/files/911888/wdbmanager-PRE3.zip.html
+Dein L�sch-Link:	http://rapidshare.de/files/911888/wdbmanager-PRE3.zip?killcode=508643957
+
+--
+
+Deine Datei wdbmanager_PRE4.zip (6333432 Bytes) wurde erfolgreich raufgeladen.
+
+Dein Download-Link:	http://rapidshare.de/files/938242/wdbmanager_PRE4.zip.html
+Dein Lösch-Link:	http://rapidshare.de/files/938242/wdbmanager_PRE4.zip?killcode=1762092817
+
+
+-- 
+HotFix: Texte werden als UTF-8 eingelesen
+
+Deine Datei obf_wowwdbmanager.jar (146011 Bytes) wurde erfolgreich raufgeladen.
+
+Dein Download-Link:	http://rapidshare.de/files/941283/obf_wowwdbmanager.jar.html
+Dein Lösch-Link:	http://rapidshare.de/files/941283/obf_wowwdbmanager.jar?killcode=2731097261
+
+---
+2005-03-23
+(PRE 6 enthielt XML Fehler in itemcache.xml)
+
+Deine Datei wdbmanager_PRE7.zip (6671609 Bytes) wurde erfolgreich raufgeladen.
+
+Dein Download-Link:	http://rapidshare.de/files/979453/wdbmanager_PRE7.zip.html
+Dein Lösch-Link:	http://rapidshare.de/files/979453/wdbmanager_PRE7.zip?killcode=1836276756
+
+---
+
+2005-03-22
+
+Deine Datei WDB-undead-lvl22-destromath.zip (346755 Bytes) wurde erfolgreich raufgeladen.
+
+Dein Download-Link:	http://rapidshare.de/files/979583/WDB-undead-lvl22-destromath.zip.html
+Dein Lösch-Link:	http://rapidshare.de/files/979583/WDB-undead-lvl22-destromath.zip?killcode=3488686201
+
+
+2005-01-04
+
+Deine Datei horde_20-26_destromath_WDB.zip (327760 Bytes) wurde erfolgreich raufgeladen.
+
+Dein Download-Link:	http://rapidshare.de/files/1086743/horde_20-26_destromath_WDB.zip.html
+Dein Lösch-Link:	http://rapidshare.de/files/1086743/horde_20-26_destromath_WDB.zip?killcode=3881545561
+
+---
+
+PRE-9
+
+09-April 2004
+
+Beginnend von heute an, werden 2 Pakete gemacht:
+
+BASE -> alle JARs, die sich eh nie ändern
+CORE -> Die eigentliche Anwendung
+
+Deine Datei wdbmanager_PRE9_BASE.zip (5864788 Bytes) wurde erfolgreich raufgeladen.
+
+Dein Download-Link:	http://rapidshare.de/files/1195436/wdbmanager_PRE9_BASE.zip.html
+Dein Lösch-Link:	http://rapidshare.de/files/1195436/wdbmanager_PRE9_BASE.zip?killcode=858022746
+
+Deine Datei wdbmanager_pre9-CORE.zip (635950 Bytes) wurde erfolgreich raufgeladen.
+
+Dein Download-Link:	http://rapidshare.de/files/1195471/wdbmanager_pre9-CORE.zip.html
+Dein Lösch-Link:	http://rapidshare.de/files/1195471/wdbmanager_pre9-CORE.zip?killcode=2979936605
+
+---
+PRE-10
+
+10-April 2004
+War Fehler bei Update - Gelöschte Tabelle wurde erst nach Neu-start wieder hergestellt
+
+Deine Datei wdbmanager_pre10-CORE.zip (633807 Bytes) wurde erfolgreich raufgeladen.
+
+Dein Download-Link:	http://rapidshare.de/files/1197549/wdbmanager_pre10-CORE.zip.html
+Dein Lösch-Link:	http://rapidshare.de/files/1197549/wdbmanager_pre10-CORE.zip?killcode=1227912416

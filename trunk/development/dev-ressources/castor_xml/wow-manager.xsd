@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Gerhard Leibrock (Hard-und-Software G. Leibrock/SW Dev) -->
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="wdbDef">
+		<xs:annotation>
+			<xs:documentation>Root for the definition of the WDB file</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="wdbId"/>
+				<xs:element ref="skipBytes" minOccurs="0"/>
+				<xs:element ref="eofMarker" minOccurs="0"/>
+				<xs:element ref="wdbElement" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="wdbId">
+		<xs:annotation>
+			<xs:documentation>unique id for the file</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="wdbElement">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="xs:string" use="required"/>
+			<xs:attribute name="size" type="xs:int" use="optional" default="0"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="skipBytes">
+		<xs:annotation>
+			<xs:documentation>Skip this number of bytes from the beginning of the WDB file. For PRE 1.6.0 this is 16, 1.6.0 is 20</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="numBytes" type="xs:int" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="eofMarker">
+		<xs:annotation>
+			<xs:documentation>This is the EOF marker, for a WDB this is 8 times 00 (hex value)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Appendix</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 1.1.3  (Win32)">
+	<META NAME="CREATED" CONTENT="20050409;15130629">
+	<META NAME="CHANGEDBY" CONTENT="Gerhard Leibrock">
+	<META NAME="CHANGED" CONTENT="20050409;15130633">
+	<STYLE>
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm }
+		P.western { font-family: "Arial", sans-serif }
+		H1 { margin-bottom: 0.21cm }
+		H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+		H1.cjk { font-family: "MS Mincho"; font-size: 16pt }
+		H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<H1 CLASS="western" STYLE="page-break-before: always">Appendix</H1>
+<P CLASS="western"><BR>PRE-8 (2004-Apr-04)</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Enhanced Scripting
+	support</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Implemented
+	Plugins<BR>(See folder &quot;<FONT FACE="Courier New, monospace">plugins</FONT>&quot;
+	for details, thanks to Yodan for pushing this forward)</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Fixed bug in XML
+	concerning gameobjectcache<BR>(Thanks to Hochelf from WDDG-GER for
+	finding the bug)</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Enhanced
+	WBDManager_I (API)</P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR><B><SPAN STYLE="font-style: normal"><FONT SIZE=4>Jython
+Scripts</FONT></SPAN></B><BR><BR>Display number of quests in database</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=256*>
+	<TR>
+		<TD WIDTH=100% VALIGN=TOP>
+			<P CLASS="western"><FONT FACE="Courier New"><FONT SIZE=2># Jython
+			example to access WoWWDBManager<BR># kizura, March 2005<BR># Needs
+			at least WowWDBManager PRE4<BR>#<BR># All rights reserved.<BR>#<BR>#
+			This script is used for WoWWDBManager<BR>#<BR># It reads the
+			entries from table &quot;questcache&quot; and<BR># prints out the
+			quest_id and the quest's name<BR># -&gt; Please check
+			&quot;questcache.xml&quot; for all attributes! &lt;-<BR>#<BR>#
+			Every script gets &quot;wdbmgrapi&quot; variable<BR># wdbmgrapi is
+			of type &quot;WoWWDBManager_API&quot;<BR># Please refer to Java
+			Docs for more information<BR>#<BR>#<BR>from java.util import *<BR><BR>#
+			Connect to database<BR>print 'Number of entries in table
+			&quot;QuestCache&quot;'<BR>print
+			wdbmgrapi.getCountOf('questcache') <BR>objQuestcache =
+			wdbmgrapi.getAllObjectsTable('questcache')<BR>print &quot;Count:
+			%d&quot; % objQuestcache.size()<BR>itObjs =
+			objQuestcache.iterator()<BR>for i in itObjs:<BR>  print &quot;QuestID:
+			%d, QuestNName: %s&quot; %
+			(i.getColumnValue(&quot;wdb_QuestId&quot;),i.getColumnValue(&quot;wdb_name&quot;))</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm; page-break-before: always">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Query database and
+generate TXT file</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=256*>
+	<THEAD>
+		<TR>
+			<TD WIDTH=100% VALIGN=TOP>
+				<P CLASS="western" STYLE="margin-bottom: 0cm"><FONT FACE="Courier New"><FONT SIZE=2>#
+				Jython example to access WoWWDBManager<BR># kizura, March 2005<BR>#
+				Needs at least WowWDBManager PRE7<BR>#<BR># All rights
+				reserved.<BR>#<BR># This script is used for WoWWDBManager<BR>#<BR>#
+				Allow the user to query the WDB database.<BR>#<BR># Generates a
+				TXT file with the found entries from the<BR># database.<BR>#<BR>#
+				params (eg: tabName=questcache):<BR># tabName - Name of the
+				database table<BR>#           creaturecache<BR>#          
+				gameobjectcache<BR>#           itemcache<BR>#          
+				itemtextcaxhe<BR>#           npccache<BR>#          
+				pagetextcache<BR>#           questcache<BR>#<BR># colName - Use
+				this column for searching<BR>#<BR># colValue - Compare all
+				columns with this value<BR>#<BR># colOrder - Name of the column
+				to sort the result (ASC)<BR>#<BR>#<BR># Every script gets
+				&quot;wdbmgrapi&quot; variable<BR># wdbmgrapi is of type
+				&quot;WoWWDBManager_API&quot;<BR># Please refer to Java Docs for
+				more information<BR>#<BR>#<BR>from java.util import *<BR>from
+				java.io import *<BR><BR># Create a DTO from the name of the
+				table<BR># (Make sure the XML file exists)<BR>dto =
+				wdbmgrapi.createDTOfromTable( tabName )<BR># Prepare the query to
+				the database<BR>dto.setColumnValue( colName, colValue );<BR><BR>#
+				Order BY<BR>orderDTO = wdbmgrapi.createDTOfromTable( tabName )<BR>#
+				Prepare the query to the database<BR>orderDTO.setColumnValue(
+				colOrder, &quot;ASC&quot; );</FONT></FONT></P>
+				<P CLASS="western"><FONT FACE="Courier New"><FONT SIZE=2><BR>#
+				Connect to database<BR>print &quot;Searching for entries in table
+				%s where %s = %s&quot; % (tabName, colName,<BR>colValue)<BR>print
+				'Number of entries in table &quot;%s&quot;: %d' %(tabName,
+				wdbmgrapi.getCountOf<BR>dto))<BR></FONT></FONT><BR>
+				</P>
+			</TD>
+		</TR>
+	</THEAD>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=256*>
+	<THEAD>
+		<TR>
+			<TD WIDTH=100% VALIGN=TOP>
+				<P CLASS="western"><FONT FACE="Courier New"><FONT SIZE=2>try:<BR>
+				 objWDBCache = wdbmgrapi.getAllObjects(dto, orderDTO) <BR>  print
+				&quot;Count: %d&quot; % objWDBCache.size()<BR>  txtFile =
+				File(&quot;.&quot;)<BR>  # Use API method (we are lazy, aren't
+				we)<BR>  print wdbmgrapi.writeTXT( txtFile, objWDBCache )<BR> 
+				print &quot;TXT file written: %s&quot;
+				%(txtFile.getAbsolutePath())<BR>  itObjs =
+				objWDBCache.iterator()<BR>#  for i in itObjs:<BR>#    print
+				&quot;QuestID: %d, QuestNName: %s&quot; %
+				(i.getColumnValue(&quot;wdb_QuestId&quot;),i.getColumnValue(&quot;wdb_name&quot;))<BR>
+				   <BR>except:<BR>  print &quot;No data found&quot;<BR></FONT></FONT><BR>
+				</P>
+			</TD>
+		</TR>
+	</THEAD>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm; font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=4>Thanks
+to</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm">	Pyro's WDBViewer<BR>	WDDG
+Forum<BR>	blizzhackers<BR>	www.wddg-ger-translators.de.vu</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm">	etc etc</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>Special Thanks
+to:<BR>	Yodan, fritzpille, pifnet-pif, Ogite, hardboil, lilly, biene
+and lillyhunter</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR><FONT SIZE=4>This
+program uses:<BR>	</FONT>Kunststoff LF 2.0<BR>	Hypersonic SQL
+database 1.7.3<BR>	Apache Log4J, Xerces<BR>	Jakarta Commons Logging
+and CLI\n&quot; + &quot;Castor from ExoLab<BR>	MySQL JDBC connector
+3.1.7<BR>	Oracle 9.2.0.3 JDBC connector for jdk_1.4<BR>	Jython 2.1<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0>
+		<COL WIDTH=128*>
+		<COL WIDTH=128*>
+		<TR VALIGN=TOP>
+			<TD WIDTH=50%>
+				<P STYLE="margin-bottom: 0cm"><FONT SIZE=3>WoWWDB-Manager by
+				Kizura ZGabi</FONT></P>
+				<P><FONT SIZE=3>Version: Version <SPAN STYLE="font-weight: medium">PRE
+				9 &ndash; &quot;die goldene Kettet&quot;</SPAN></FONT></P>
+			</TD>
+			<TD WIDTH=50%>
+				<P ALIGN=RIGHT>Seite <SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE></SDFIELD></P>
+			</TD>
+		</TR>
+	</TABLE>
+	<P STYLE="margin-bottom: 0cm"><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>

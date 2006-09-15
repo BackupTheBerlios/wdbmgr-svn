@@ -1,0 +1,191 @@
+kizura zgabi, >=03/2005
+wdbearmanager
+
+
+PLEASE
+If you like this program and find it useful:
+Please donate money to a charity oranization of your choice.
+I recommend any organization that fights cancer.
+
+>> WDBearManager 2006-09-14 by kizura // 1.2.7-W1.12.0 <<
+
+o Plugin mechanism improved.
+  Please d/l a sample plugin from
+  http://filebeam.com/75936fc9141bdfdcbdbf7db7ed0952c0
+  Just unpack and make sure it resides in the folder "plugins/mango"
+  If you want to write your own patchDB.xml, please take a look at
+  the forum - Syntax is identical to that of patchSCP.xml
+  This plugin was made for the Mangos database.
+
+---
+>> WDBearManager 2006-09-12 by kizura // 1.2.6-W1.12.0 <<
+
+o WDBTXT reworked - going live with tests
+  If it works, users can put their WDBTXT online for sharing
+
+---
+
+>> WDBearManager 2006-09-12 by kizura // 1.2.5-W1.12.0 <<
+
+o Still working on patchSCP
+  Found a problem with UTF-8 encoding
+  Format improved (removed empty lines)
+
+---
+
+>> WDBearManager 2006-09-12 by kizura // 1.2.4-W1.12.0 <<
+
+o Uploaded wrong 1.2.3 archive
+
+---
+
+>> WDBearManager 2006-09-12 by kizura // 1.2.3-W1.12.0 <<
+
+o Fixed issue with patchSCP
+  Thx to Hochelf for helping debugging
+
+---
+
+>> WDBearManager 2006-09-11 by kizura // 1.2.2-W1.12.0 <<
+
+o Swapped columns in questcache - nothing renamed, no loss of data
+  Columns were swapped, sry.
+o gameobjectcache for 1.12.0 broken
+  Need information about the format.
+o Re-worked patching SCP files
+o WDBTXT compatibility version changed to 1.2.2-W1.12.0
+
+---
+
+>> WDBearManager 2006-09-10 by kizura // 1.2.1-W1.12.0 <<
+
+o Added api documentation to the build process (JavaDoc)
+o log4j.xml can now be edited (was inside the jar before)
+o WDBTXT: added compatibility checks
+o Import WDB files: replaced \r\n with "\r\n" (text)
+o Changed plugin mechanism
+  Now every plugin must reside in a directory below the "plugins" folder
+  The name of the jar and the properties file must be the same like
+  the folder (Please expect a demo coming soon)
+o Error in db update - Script dropped table "questcache"
+  But "creaturecache" should have been dropped - fixed
+o Typo in itemcache.xml
+  wdb_RequiredSkillRank -> added a blank // fixed (no db update needed)
+o Typo in questcache.xml
+  wdb_RewSpell
+  wdb_StartingItemID
+  wdb_Subdescription
+  -> added a blank // fixed (no db update needed)
+o Fixed duplicate or multiple occurrence problem
+  Since the implementation of LOCALE there was a bug
+  concerning UPDATE.
+  It overwrote values from other locales, fixed now.
+  Please re-import old data (disable UPDATE)
+  Thanks to Mulder/Darkman for showing me this issue.
+
+---
+>> WDBearManager 2006-09-04 by kizura // 1.2.0-W1.12.0 <<
+
+WARNING:
+BASE package has changed - Make sure you have at least
+wdbearmanager_1.2.0-W1.12_BASE.zip!!
+
+o Added keyword "@file:" to db-patching
+  Allows the execution of a Jython script
+o DB Table update -> from 0.11 to 1.12-W1.12.0
+  itemcache       - complete renewal // old data will be lost
+  creaturecache   - columns renamed
+  gameobjectcache - columns renamed
+  questcache      - columns renamed
+  (New names with information from the Mangos db and
+  http://www.sourcepeek.com/wiki/Category:World_of_Warcraft)
+o New naming convention for the application and the DB
+  first string contains the application's version
+  string after "-" contains "W" and the WDB version supported
+  eg:
+  1.2.0-W1.12.0 means "WDBearManager 1.2.0, supports all formats incl. 1.12.0"
+o New BASE
+  Added MySQL 5 support (no more need to patch the "jars")
+o Added support for WDB version 1.12.0
+
+
+---
+
+>> WDBearManager 2006-08-16 by kizura // 1.1 BETA-10 (no_name) <<
+o Added support for 1.11.2
+o Updated "plugin" mechanism and started independent project for a plugin.
+  Plugin and code will be released soon.
+
+---
+>> WDBearManager 2006-08-14 by kizura // 1.1 BETA-9 (no_name) <<
+2006-06-29, latest change: 2006-08-14
+o Enhanced support for different localized versions of the WDB
+  files. Now enUS, enGB, deDE (etc etc) can be stored in one
+  database without problems.
+o Added -locale switch (console version)
+o Jython script to eliminate duplicate entries inside the database
+  included.
+  Thanks to Mulder for this hint.
+o Completely rewrote PatchSCP.xml
+  Thanks to Hochelf for the idea.
+o Added support for upto and including 1.11.1 WDB format
+o Changed the API, so tables can be altered w/o losing any data
+o Fixed itemcache (updated for 1.11.1 and found a bug concerning
+  the name of a column; existed since WDB 1.8 support)
+
+---
+2006-04-11
+1.0 (leb)
+o Thanks to John for the WDB 1.10 specs
+o Thanks to Annunaki for the "decryption" of the WDB header
+o Now parses ANY WDB file (Config files for each format)
+
+---
+2005-09-18
+PRE-13 (die letzte tröte)
+o changed XML format to parse WDB files
+  thanks to Andrikos for the 1.6.x WDB specs
+o minor changes concerning documentation
+
+
+2005-04-17
+RC-1 PRE-12 (herren der winde)
+o fixed some minor issues
+
+2005-04-07
+PRE-9 (die goldene Kette)
+
+o Added automatic database update
+  (Program checks, what version the db has and updates
+  it, using SQL scripts)
+o Check for updates (own website)
+
+---
+
+2005-03-23
+PRE-6 (Zwei Brueder)
+
+Added UTF support
+GUI only:
+  Patching *.scp files is now defined in patchSCP.xml
+  Added "import multiple WDB files" (
+
+---
+
+2005-03-20
+Added
+ -J <parameter=value>   set value for Jython script
+ -script                specify a Jython script, receives 'wdbmgrapi'
+                        variable which contains WDBManager_API instance
+
+---
+
+2005-03-17
+Added
+-storeDB        stores files inside a SQL database (default hsqldb)
+-mergequests    merge quests from database with this quests.scp file
+-txtfolder      output TXT to this folder, needs 'wdbfile'
+                Creates a human readable .txt file (for debugging the WDB contents)
+-update         update existing database entries (otherwise only INSERT)
+-verbose        verbose mode, print info
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Config file, that describes the format of a WDB file.<br/>
+
+  Version: 1.11
+  Same as 1.10
+
+  A lot of the description concerning the columns was taken from:
+  http://www.sourcepeek.com/wiki/Main_Page
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping        - comment
+  -
+  tinyInt        - java.sql.Types.TinyInt    1 byte signed int
+  smallInt       - java.sql.Types.SmallInt   Short (2 byte signed int)
+  integer        - java.sql.Types.Int        Integer (4 byte signed int)
+  varChar        - java.sql.Types.VARCHAR    string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC    4 byte int value, gets hex encoded
+                                             after read from WDB (Stored as
+                                             HEX inside database)
+  single         - java.sql.Types.FLOAT      4 byte float, single precision
+                                             Stored inside database as Varchar()
+                                             to preserve precision.
+  char, size     - java.sql.Types.CHAR       string, fixed width
+                   eg:   <wdbElement name="wdb_Text" type="char" size="20"/>
+                   BEWARE:
+                   Internal encoding of WDB is UTF-8 *but* you can only specify the
+                   number of bytes here. This can significantly differ
+                   (eg german "ß" is 2 bytes)
+  -
+  
+  For PRE-1.6.0, the WDB files contain an ID of 16 bytes
+  1.6.0 - ID is 20 bytes
+  
+  Please use "skipBytes" to set the length of the ID
+  (Thanks to andrikos for this hint.)
+  
+  kizura zgabi, >= 03/2005
+-->
+<wdbDef>
+  <wdbId name="itemnamecache" />
+  <skipBytes numBytes="20" />
+  <wdbElement name="wdb_ID" type="integer" />
+  <wdbElement name="wdb_RecLen" type="integer" />
+  <wdbElement name="wdb_Name1" type="varChar" /> <!-- #3 name -->
+</wdbDef>

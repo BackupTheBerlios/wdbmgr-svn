@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+If you want to add your own patches, just edit this file.
+
+It is used for the dynamic configuration of all patch algorithms.
+
+syntax:
+source = text in scp file
+destination = name in wdbmanager database
+line = how a line is to be built inside the SCP file
+       (Here you specify one or more entry that constructs a line inside the SCP file)
+
+convertTo = manipulate data read from the database
+Valid settings are:
+bin, hex, octal - convert value to binary, hex or octal
+	(Warning: Make sure your input value is an integer, otherwise the patch process
+	will stop with an error!)
+upper, lower - convert String to upper/lower case
+int - convert value to an integer
+
+
+If you want a text across mulitple lines, use
+multiline="1"
+
+(As used in pages.scp)
+
+eg
+this will do:
+
+text=blah blah
+text=blah2 blah2 
+
+etc.
+
+Hint:
+- A line is only executed, if the first entry inside the database is not 0
+  (Numeric value for zero).
+- First specify all "replace" settings, THEN specify all "replaceMulti" settings
+
+replace -> reward_item example (quests.scp)
+                
+    <replace source="desc">
+      <line>
+        <destination name="wdb_Desc1"/>
+      </line>
+    </replace>
+    <replace source="reward_item">
+      <line>
+        <destination name="wdb_RewItemId1" notNull="1"/>
+        <destination name="wdb_RewItemCount1"/>
+      </line>
+      <line>
+        <destination name="wdb_RewardItem2a" notNull="1"/>
+        <destination name="wdb_RewardItem2b" notNull="1"/>
+      </line>
+      <line>
+    	  <destination name="wdb_Unknown11" notNull="1"/>
+    	  <destination name="wdb_Unknown12" notNull="1">
+		  </destination>
+      </line>
+      <line>
+        <destination name="wdb_Unknown13" notNull="1"/>
+        <destination name="wdb_Unknown14" notNull="1"/>
+      </line>
+    </replace>
+
+If you want to manipulate the value from the WDBear database before
+it is written to the SCP, use the <destination> TAG.
+Just write your Jython code between <destination> and
+</destination>.
+
+eg: add "Hurz" to the "name"
+
+    <replace source="name">
+      <line>
+        <destination name="wdb_Name"><![CDATA[
+print wdb_Name
+retValue = wdb_Name + "Hurz"
+]]></destination>
+
+You just provide a Jython script, which is executed each time.
+The Jython script receives the name of the WDBear column as a
+variable ("wdb_Name", as specified in <destination>)
+To manipulate the value, set the variable "retValue".
+This will replace the original value from the database.
+
+
+kizura zgabi, 2005/2006
+
+History:
+1.1 - Aug 2006
+	Added convertTo and destination2... destination10
+	Thanks to Hochelf for the inspiration
+
+version   $Rev: 217 $
+
+    config name is displayed in GUI with "patch XYZ
+       It is also used as parameter for the "patchSCP" command line
+       argument.
+       eg
+       java -jar obf_wowwdbmanager -patchSCP quests -SCPname myQuests.scp
+   Hint: Do NOT change the "name" attribute!
+-->
+<patchSCP>
+	<patchConfig name="quests">
+    <marker name="quest" />
+    <xmlConfig name="questcache.xml" />
+		<replace source="name">
+			<line>
+				<destination name="wdb_Title"/>
+			</line>
+		</replace>
+		<replace source="desc">
+			<line>
+				<destination name="wdb_Objectives"/>
+			</line>
+		</replace>
+		<replace source="desc">
+			<line>
+				<destination name="wdb_Subdescription"/>
+			</line>
+		</replace>
+		<replace source="details">
+			<line>
+				<destination name="wdb_Details"/>
+			</line>
+		</replace>
+		<replace source="zone">
+			<line>
+				<destination name="wdb_ZoneId"/>
+			</line>
+		</replace>
+		<replace source="reward_item">
+			<line>
+				<destination name="wdb_RewItemId1" notNull="1"/>
+				<destination name="wdb_RewItemCount1" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_RewItemId2" notNull="1"/>
+				<destination name="wdb_RewItemCount2" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_RewItemId3" notNull="1"/>
+				<destination name="wdb_RewItemCount3" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_RewItemId4" notNull="1"/>
+				<destination name="wdb_RewItemCount4" notNull="1"/>
+			</line>
+		</replace>
+		<replace source="reward_choice">
+			<line>
+				<destination name="wdb_RewChoiceItemId1" notNull="1"/>
+				<destination name="wdb_RewChoiceItemCount1" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_RewChoiceItemId2" notNull="1"/>
+				<destination name="wdb_RewChoiceItemCount2" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_RewChoiceItemId3" notNull="1"/>
+				<destination name="wdb_RewChoiceItemCount3" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_RewChoiceItemId4" notNull="1"/>
+				<destination name="wdb_RewChoiceItemCount4" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_RewChoiceItemId5" notNull="1"/>
+				<destination name="wdb_RewChoiceItemCount5" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_RewChoiceItemId6" notNull="1"/>
+				<destination name="wdb_RewChoiceItemCount6" notNull="1"/>
+			</line>
+		</replace>
+		<replace source="deliver">
+			<line>
+				<destination name="wdb_ReqItemId1" notNull="1"/>
+				<destination name="wdb_ReqItemCount1" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_ReqItemId2" notNull="1"/>
+				<destination name="wdb_ReqItemCount2" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_ReqItemId3" notNull="1"/>
+				<destination name="wdb_ReqItemCount3" notNull="1"/>
+			</line>
+			<line>
+				<destination name="wdb_ReqItemId4" notNull="1"/>
+				<destination name="wdb_ReqItemCount4" notNull="1"/>
+			</line>
+		</replace>
+	</patchConfig>
+	<patchConfig name="items">
+	<marker name="item" />
+    <xmlConfig name="itemcache.xml" />
+	    <replace source="name">
+			<line>
+			    <destination name="wdb_Name"/>
+			</line>
+		</replace>
+		<replace source="name2">
+			<line>
+				<destination name="wdb_Name2"/>
+			</line>
+		</replace>
+		<replace source="name3">
+			<line>
+				<destination name="wdb_Name3"/>
+			</line>
+		</replace>
+		<replace source="name4">
+			<line>
+				<destination name="wdb_Name4"/>
+			</line>
+		</replace>
+		<replace source="description">
+			<line>
+				<destination name="wdb_Description"/>
+			</line>
+		</replace>
+		<replace source="class">
+			<line>
+				<destination name="wdb_Class"/>
+			</line>
+		</replace>
+		<replace source="subclass">
+			<line>
+				<destination name="wdb_SubClass"/>
+			</line>
+		</replace>
+		<replace source="model">
+			<line>
+				<destination name="wdb_DisplayID"/>
+			</line>
+		</replace>
+		<replace source="quality">
+			<line>
+				<destination name="wdb_Quality"/>
+			</line>
+		</replace>
+		<replace source="buyprice">
+			<line>
+				<destination name="wdb_BuyPrice"/>
+			</line>
+		</replace>
+		<replace source="sellprice">
+			<line>
+				<destination name="wdb_SellPrice"/>
+			</line>
+		</replace>
+		<replace source="inventorytype">
+			<line>
+				<destination name="wdb_InventoryType"/>
+			</line>
+		</replace>
+		<!--
+		<replace source="races">
+			<line>
+				<destination name="wdb_Races" convertTo="hex">
+			</line>
+		</replace>
+		<replace source="classes">
+			<line>
+				<destination name="wdb_Classes" convertTo="hex">
+			</line>
+		</replace>
+		-->
+		<replace source="level">
+			<line>
+				<destination name="wdb_ItemLevel"/>
+			</line>
+		</replace>
+		<replace source="reqlevel">
+			<line>
+				<destination name="wdb_RequiredLevel"/>
+			</line>
+		</replace>
+		<replace source="skill">
+			<line>
+				<destination name="wdb_RequiredSkill"/>
+			</line>
+		</replace>
+		<replace source="skillrank">
+			<line>
+				<destination name="wdb_RequiredSkillRank"/>
+			</line>
+		</replace>
+		<replace source="pvprankreq">
+			<line>
+				<destination name="wdb_RequiredHonorRank"/>
+			</line>
+		</replace>
+		<replace source="maxcount">
+			<line>
+				<destination name="wdb_MaxCount"/>
+			</line>
+		</replace>
+		<replace source="stackable">
+			<line>
+				<destination name="wdb_Stackable"/>
+			</line>
+		</replace>
+		<replace source="containerslots">
+			<line>
+				<destination name="wdb_ContainerSlots"/>
+			</line>
+		</replace>
+		<replace source="resistance1">
+			<line>
+				<destination name="wdb_Armor"/>
+			</line>
+		</replace>
+		<replace source="resistance2">
+			<line>
+				<destination name="wdb_Holy_Res"/>
+			</line>
+		</replace>
+		<replace source="resistance3">
+			<line>
+				<destination name="wdb_Fire_Res"/>
+			</line>
+		</replace>
+		<replace source="resistance4">
+			<line>
+				<destination name="wdb_Nature_Res"/>
+			</line>
+		</replace>
+		<replace source="resistance5">
+			<line>
+				<destination name="wdb_Frost_Res"/>
+			</line>
+		</replace>
+		<replace source="resistance6">
+			<line>
+				<destination name="wdb_Shadow_Res"/>
+			</line>
+		</replace>
+		<replace source="resistance7">
+			<line>
+				<destination name="wdb_Arcance_Res"/>
+			</line>
+		</replace>
+		<replace source="delay">
+			<line>
+				<destination name="wdb_Delay"/>
+			</line>
+		</replace>
+		<replace source="bonding">
+			<line>
+				<destination name="wdb_Bonding"/>
+			</line>
+		</replace>
+		<replace source="pagetext">
+			<line>
+				<destination name="wdb_PageText"/>
+			</line>
+		</replace>
+		<replace source="language">
+			<line>
+				<destination name="wdb_LanguageID"/>
+			</line>
+		</replace>
+		<replace source="pagematerial">
+			<line>
+				<destination name="wdb_PageMaterial"/>
+			</line>
+		</replace>
+		<replace source="startquest">
+			<line>
+				<destination name="wdb_StartQuestID"/>
+			</line>
+		</replace>
+		<replace source="lockid">
+			<line>
+				<destination name="wdb_LockID"/>
+			</line>
+		</replace>
+		<replace source="material">
+			<line>
+				<destination name="wdb_Material"/>
+			</line>
+		</replace>
+		<replace source="sheath">
+			<line>
+				<destination name="wdb_SheathType"/>
+			</line>
+		</replace>
+		<replace source="block">
+			<line>
+				<destination name="wdb_Block"/>
+			</line>
+		</replace>
+		<replace source="set">
+			<line>
+				<destination name="wdb_ItemSet"/>
+			</line>
+		</replace>
+		<replace source="durability">
+			<line>
+				<destination name="wdb_MaxDurability"/>
+			</line>
+		</replace>
+		<replace source="bonus">
+			<line>
+				<destination name="wdb_BonusStat1" notNull="1"/>
+				<destination name="wdb_BonusAmount1"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat2" notNull="1"/>
+				<destination name="wdb_BonusAmount2"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat3" notNull="1"/>
+				<destination name="wdb_BonusAmount3"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat4" notNull="1"/>
+				<destination name="wdb_BonusAmount4"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat5" notNull="1"/>
+				<destination name="wdb_BonusAmount5"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat6" notNull="1"/>
+				<destination name="wdb_BonusAmount6"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat7" notNull="1"/>
+				<destination name="wdb_BonusAmount7"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat8" notNull="1"/>
+				<destination name="wdb_BonusAmount8"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat9" notNull="1"/>
+				<destination name="wdb_BonusAmount9"/>
+			</line>
+			<line>
+				<destination name="wdb_BonusStat10" notNull="1"/>
+				<destination name="wdb_BonusAmount10"/>
+			</line>
+		</replace>
+	<!--
+		<replace source="damage">
+			<line>
+				<destination name="wdb_MinDamage1" notNull="1"  convertTo="int"/>
+				<destination name="wdb_MaxDamage1" notNull="1"  convertTo="int"/>
+				<destination name="wdb_DamageType1"/>
+			</line>
+			<line>
+				<destination name="wdb_MinDamage2" notNull="1"  convertTo="int"/>
+				<destination name="wdb_MaxDamage2" notNull="1"  convertTo="int"/>
+				<destination name="wdb_DamageType2"/>
+			</line>
+			<line>
+				<destination name="wdb_MinDamage3" notNull="1"  convertTo="int"/>
+				<destination name="wdb_MaxDamage3" notNull="1"  convertTo="int"/>
+				<destination name="wdb_DamageType3"/>
+			</line>
+			<line>
+				<destination name="wdb_MinDamage4" notNull="1"  convertTo="int"/>
+				<destination name="wdb_MaxDamage4" notNull="1"  convertTo="int"/>
+				<destination name="wdb_DamageType4"/>
+			</line>
+			<line>
+				<destination name="wdb_MinDamage5" notNull="1"  convertTo="int"/>
+				<destination name="wdb_MaxDamage5" notNull="1"  convertTo="int"/>
+				<destination name="wdb_DamageType5"/>
+			</line>
+		</replace>
+	-->
+	</patchConfig>
+
+
+
+  <!--
+  <patchConfig name="creatures">
+    <marker name="creature" />
+    <xmlConfig name="creaturecache.xml" />
+    <replace source="name" destination="wdb_Name1"/>
+    <replace source="name2" destination="wdb_Name2"/>
+    <replace source="name3" destination="wdb_Name3"/>
+    <replace source="name4" destination="wdb_Name4"/>
+    <replace source="guild" destination="wdb_Description"/>
+  </patchConfig>
+  <patchConfig name="pages">
+    <marker name="page" />
+    <xmlConfig name="pagetextcache.xml" />
+    <replace source="text" destination="wdbd_Text" multiline="1"/>
+  </patchConfig>
+  <patchConfig name="gameobjects"> 
+     <marker name="gameobj" /> 
+     <xmlConfig name="gameobjectcache.xml" /> 
+     <replace source="name" destination="wdb_Name1"/> 
+  </patchConfig>
+  -->
+ 
+ 
+</patchSCP>

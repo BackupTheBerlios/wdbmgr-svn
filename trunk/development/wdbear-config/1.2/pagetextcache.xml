@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- pages.scp
+  Config file, that describes the format of a WDB file.<br/>
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping       - comment
+  -
+  integer        - java.sql.Types.Int       4 byte signed int
+  varChar        - java.sql.Types.VARCHAR   string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC   4 byte int value, gets hex encoded after read from WDB
+  single         - java.sql.Types.FLOAT     4 byte float, single precision
+                                            Stored inside database as Varchar() to preserve
+                                            precision.
+  -
+  kizura zgabi, >= 03/2005
+-->
+<wdbDef>
+  <wdbId name="pagetextcache" />
+  <wdbElement name="wdb_ID" type="integer" />
+  <wdbElement name="wdb_RecLen" type="integer" />
+  <wdbElement name="wdb_Text" type="varChar" />
+  <wdbElement name="wdb_nextPageId" type="integer" />
+</wdbDef>

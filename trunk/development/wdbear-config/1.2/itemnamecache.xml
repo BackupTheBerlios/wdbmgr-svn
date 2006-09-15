@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wdbDef>
+  <wdbId name="itemnamecache" />
+  <wdbElement name="wdb_ID" type="integer" />
+  <wdbElement name="wdb_RecLen" type="integer" />
+  <!-- name -->
+  <wdbElement name="wdb_Name1" type="varChar" />
+</wdbDef>

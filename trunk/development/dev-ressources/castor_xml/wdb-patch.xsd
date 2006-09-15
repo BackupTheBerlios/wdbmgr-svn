@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.2 U (http://www.xmlspy.com) by name (company) -->
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Gerhard Leibrock (Hard-und-Software G. Leibrock/SW Dev) -->
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="patchSCP">
+		<xs:annotation>
+			<xs:documentation>Root for the definition of the patch</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="patchConfig"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="xmlConfig">
+		<xs:annotation>
+			<xs:documentation>config file containing the XML description of the database</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="replace">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="line" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="source" type="xs:string" use="required"/>
+			<xs:attribute name="multiline" type="xs:string" use="optional" default="0"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="marker">
+		<xs:annotation>
+			<xs:documentation>something like [quest, eg</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="patchConfig">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="help" minOccurs="0"/>
+				<xs:element ref="marker"/>
+				<xs:element ref="xmlConfig"/>
+				<xs:element ref="replace" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="line">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="destination" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="destination">
+		<xs:annotation>
+			<xs:documentation>Specify a value from the WDBear database to be used</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string" use="required"/>
+					<xs:attribute name="notNull" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="help" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Describe what your patchConfig is doing, optional</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

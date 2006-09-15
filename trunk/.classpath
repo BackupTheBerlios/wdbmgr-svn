@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="development/src/java"/>
+	<classpathentry kind="src" path="development/test/java"/>
+	<classpathentry kind="src" path="development/src-base/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/castor/jars/castor-0.9.7.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/log4j/jars/log4j-1.2.9.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/xerces/jars/xercesImpl-2.6.2.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/commons-logging/jars/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/commons-cli/jars/commons-cli-1.0.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/hsqldb/jars/hsqldb-1.7.3.3.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/jgoodies/jars/looks-1.2.2.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/jython/jars/jython-2.1.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/mysql/jars/mysql-connector-java-3.1.13.jar"/>
+	<classpathentry kind="var" path="JAR_REPOSITORY/repository/xerces/jars/xmlParserAPIs-2.6.2.jar"/>
+	<classpathentry kind="output" path="development/build/bin"/>
+</classpath>

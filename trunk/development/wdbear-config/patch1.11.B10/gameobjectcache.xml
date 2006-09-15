@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Config file, that describes the format of a WDB file.<br/>
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping        - comment
+  -
+  tinyInt        - java.sql.Types.TinyInt    1 byte signed int
+  smallInt       - java.sql.Types.SmallInt   Short (2 byte signed int)
+  integer        - java.sql.Types.Int        Integer (4 byte signed int)
+  varChar        - java.sql.Types.VARCHAR    string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC    4 byte int value, gets hex encoded after read from WDB
+  single         - java.sql.Types.FLOAT      4 byte float, single precision
+                                             Stored inside database as Varchar() to preserve
+                                             precision.
+  -
+  
+  Thanks to John for fixing the XML files to work with 1.10.
+  
+
+  kizura zgabi, >= 03/2005
+-->
+<wdbDef>
+  <wdbId name="gameobjectcache" />
+  <skipBytes numBytes="20" />
+  <!-- [gameobj XY] -->
+  <wdbElement name="wdb_ID" type="integer" />
+  <wdbElement name="wdb_RecLen" type="integer" />
+  <!-- type -->
+  <wdbElement name="wdb_Unk3" type="integer" />
+  <!-- model -->
+  <wdbElement name="wdb_ModelID" type="integer" />
+  <!-- name -->
+  <wdbElement name="wdb_Name1" type="varChar" />
+  <!-- dont know, same value as Name1 -->
+  <wdbElement name="wdb_Name2" type="varChar" />
+  <!-- dont know, same value as Name1 -->
+  <wdbElement name="wdb_Name3" type="varChar" />
+  <!-- dont know, same value as Name1 -->
+  <wdbElement name="wdb_Name4" type="varChar" />
+  <!-- sound0 -->
+  <wdbElement name="wdb_Unk9" type="integer" />
+  <!-- sound1 -->
+  <wdbElement name="wdb_Unk10" type="integer" />
+  <!-- sound2 -->
+  <wdbElement name="wdb_Unk11" type="integer" />
+  <!-- sound3 -->
+  <wdbElement name="wdb_Unk12" type="integer" />
+  <!-- sound4 -->
+  <wdbElement name="wdb_Unk13" type="integer" />
+  <!-- sound5 -->
+  <wdbElement name="wdb_Unk14" type="integer" />
+  <!-- sound6 -->
+  <wdbElement name="wdb_Unk15" type="integer" />
+  <!-- sound7 -->
+  <wdbElement name="wdb_Unk16" type="integer" />
+  <!-- sound8 -->
+  <wdbElement name="wdb_Unk17" type="integer" />
+  <!-- sound9 -->
+  <wdbElement name="wdb_Unk18" type="integer" />
+  
+  <!-- Added by Nick Andrik -->
+  <wdbElement name="wdb_Unk19" type="integer" />
+  <wdbElement name="wdb_Unk20" type="integer" />
+  <wdbElement name="wdb_Unk21" type="integer" />
+  <wdbElement name="wdb_Unk22" type="integer" />
+  <wdbElement name="wdb_Unk23" type="integer" />
+  <wdbElement name="wdb_Unk24" type="integer" />
+</wdbDef>

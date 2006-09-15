@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+
+	
+  
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+
+	
+	
+  
+  
+  <title></title>
+  <meta name="GENERATOR" content="OpenOffice.org 1.1.3  (Win32)">
+
+
+	
+  
+  <meta name="CREATED" content="20050331;13312600">
+
+
+	
+  
+  <meta name="CHANGEDBY" content="Gerhard Leibrock">
+
+
+	
+  
+  <meta name="CHANGED" content="20050403;13474107">
+
+
+	
+  
+  <style>
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm }
+		P.western { font-family: "Verdana", sans-serif }
+	-->
+	</style>
+</head>
+
+
+<body dir="ltr" lang="">
+
+
+<p class="western" style="margin-bottom: 0cm;"><b><font size="4">Jython&nbsp;script: "eliminateDuplicates"<br>
+
+<br>
+
+</font></b>This script searches the WDBear database for duplicate entries and eliminates them.</p>
+
+<p class="western" style="margin-bottom: 0cm;">Due to an issue concerning the insert/update functionality it can occurr, that the<br>
+manager inserts an object more than one time.<br>
+Since I did not find the error, I wrote this script.</p>
+<p class="western" style="margin-bottom: 0cm;">Just run it and it will keep your database clean.<br>
+&nbsp;<br>
+(The
+script uses the default database, configured using
+"<font face="Courier New, monospace">wdbmanager_sql.properties</font>")<br>
+
+</p>
+
+<p class="western" style="margin-bottom: 0cm;">It creates a log file 'eliminateDuplicates.log' with details about the process.</p>
+
+<ul>
+
+  <li>
+    
+    <p class="western" style="margin-bottom: 0cm;"><font face="Verdana, sans-serif"><font size="3">quests.scp_patch<br>
+
+    </font></font><font face="Verdana, sans-serif"><font size="3">Contains the patched quests.scp file.</font></font></p>
+
+  </li>
+
+  <li><font face="Verdana, sans-serif"><font size="3">quests.scp_patch_info<br>
+
+Contains information about the patch process</font></font></li>
+
+</ul>
+
+<p class="western" style="margin-bottom: 0cm;">Every
+Jython script for the WDBManager must reside in the "<font face="Courier New, monospace">scripts</font>"
+folder:<br>
+
+<br>
+
+&lt;name&gt;.py<br>
+
+The script<br>
+
+<br>
+
+help/&lt;name&gt;.html<br>
+
+Help
+files (incl. images,etc)<br>
+
+<br>
+
+&lt;name&gt;.properties<br>
+
+Parameters,
+that were set using the GUI (saved/loaded automatically)<br>
+
+<br>
+
+If
+you plan to write a Jython script:<br>
+
+<br>
+
+The script receives a
+variable called "<font size="3"><font face="Courier New">wdbmgrapi"</font>
+</font>from type "<font size="3"><font face="Courier New">WoWWDBManager_API"</font></font>.</p>
+
+
+<p class="western" style="margin-bottom: 0cm;"><br>
+
+<br>
+
+<font face="Courier New, monospace">wdbmrgapi</font>
+allows you full access to the API of the WDBManager application,
+including full access to all data stored inside the database.<br>
+
+Please
+refer to the JavaDocs for a detailed description of all possible
+methods.<br>
+
+<br>
+
+&copy; by kizura, Aug 2006<br>
+
+<br>
+
+lousy.kizura@gmail.com<br>
+
+<br>
+
+
+</p>
+
+
+</body>
+</html>

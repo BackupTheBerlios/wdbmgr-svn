@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Config file, that describes the format of the creaturecache.wdb
+  Version: 1.10
+  Identical to 1.9, 1.8
+  
+  A lot of the description concerning the columns was taken from:
+  http://www.sourcepeek.com/wiki/Main_Page
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping        - comment
+  
+  
+  tinyInt        - java.sql.Types.TinyInt    1 byte signed int
+  smallInt       - java.sql.Types.SmallInt   Short (2 byte signed int)
+  integer        - java.sql.Types.Int        Integer (4 byte signed int)
+  varChar        - java.sql.Types.VARCHAR    string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC    4 byte int value, gets hex encoded
+                                             after read from WDB (Stored as
+                                             HEX inside database)
+  single         - java.sql.Types.FLOAT      4 byte float, single precision
+                                             Stored inside database as Varchar()
+                                             to preserve precision.
+  char, size     - java.sql.Types.CHAR       string, fixed width
+                   eg:   <wdbElement name="Text" type="char" size="20"/>
+                   BEWARE:
+                   Internal encoding of WDB is UTF-8 *but* you can only specify the
+                   number of bytes here. This can significantly differ
+                   (eg german "ß" is 2 bytes)
+  -
+  
+  For PRE-1.6.0, the WDB files contain an ID of 16 bytes
+  1.6.0 - ID is 20 bytes
+  
+  Please use "skipBytes" to set the length of the ID
+  (Thanks to andrikos for this hint.)
+  
+  Thanks to John for fixing the XML files to work with 1.10.
+  
+  kizura zgabi, >= 03/2005
+-->
+<wdbDef>
+  <wdbId name="creaturecache" />
+  <skipBytes numBytes="20" />
+  <wdbElement name="wdb_ID" type="integer" />       <!-- #1 [creature XX] -->
+  <wdbElement name="wdb_RecLen" type="integer" />   <!-- #2 Defines the length of the record -->
+  <wdbElement name="wdb_Name1" type="varChar" />    <!-- #3 name -->
+  <wdbElement name="wdb_Name2" type="varChar" />    <!-- #4 name2 -->
+  <wdbElement name="wdb_Name3" type="varChar" />    <!-- #5 name3 -->
+  <wdbElement name="wdb_Name4" type="varChar" />    <!-- #6 name4 -->
+  <wdbElement name="wdb_Description" type="varChar" />   <!-- #7 guild -->
+  <wdbElement name="wdb_Unk" type="integer" />           <!-- #8 unk12 UNKNOWN -->
+  <wdbElement name="wdb_CreatureType" type="integer" />  <!-- #9 See CreatureType.dbc, see Appendix -->
+  <wdbElement name="wdb_CreatureFamily" type="integer" /> <!-- #10 See CreatureFamily.dbc -->
+  <wdbElement name="wdb_flags1" type="integer" />         <!-- #11 creatures.spc, flags1 -->
+  <wdbElement name="wdb_Unk12" type="integer" />          <!-- #12 unk12 UNKNOWN -->
+  <wdbElement name="wdb_SpellDataID" type="integer" />    <!-- #13 See CreatureSpellData.dbc, New since 1.60 -->
+  <wdbElement name="wdb_ModelID" type="integer" />        <!-- #14 model, see CreatureDisplayInfo.dbc -->
+  <wdbElement name="wdb_Unk2" type="smallInt" />          <!-- #15 unk14 UNKNOWN -->
+  
+  <!-- Appendix
+  
+  #9 CreatureType, Taken from: IRPG QDB Team Forum Index
+                   -> Working Areas, Tutorials & NEWS
+                   PostPosted: Wed Mar 09, 2005 1:17 am
+                   Post subject: Creatures Explanations
+                   "TheSelby"
+                   Creature Types:
+                   1 Beast   2 Dragonkin  3 Demon    4 Elemental  5 Giant
+                   6 Undead  7 Humanoid   8 Critter  9 Mechanical 10 Not Specified
+
+  
+  -->
+
+</wdbDef>

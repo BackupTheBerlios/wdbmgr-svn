@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Config file, that describes the format of a WDB file.<br/>
+
+  Version: 1.10
+  Differs from 1.9, new column
+
+  A lot of the description concerning the columns was taken from:
+  http://www.sourcepeek.com/wiki/Main_Page
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping        - comment
+  -
+  tinyInt        - java.sql.Types.TinyInt    1 byte signed int
+  smallInt       - java.sql.Types.SmallInt   Short (2 byte signed int)
+  integer        - java.sql.Types.Int        Integer (4 byte signed int)
+  varChar        - java.sql.Types.VARCHAR    string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC    4 byte int value, gets hex encoded
+                                             after read from WDB (Stored as
+                                             HEX inside database)
+  single         - java.sql.Types.FLOAT      4 byte float, single precision
+                                             Stored inside database as Varchar()
+                                             to preserve precision.
+  char, size     - java.sql.Types.CHAR       string, fixed width
+                   eg:   <wdbElement name="wdb_Text" type="char" size="20"/>
+                   BEWARE:
+                   Internal encoding of WDB is UTF-8 *but* you can only specify the
+                   number of bytes here. This can significantly differ
+                   (eg german "ß" is 2 bytes)
+  -
+  
+  For PRE-1.6.0, the WDB files contain an ID of 16 bytes
+  1.6.0 - ID is 20 bytes
+  
+  Please use "skipBytes" to set the length of the ID
+  (Thanks to andrikos for this hint.)
+  
+  Thanks to Steve from Belgium for the hint with itemcache.wdb
+  (Sorry I messed this up with the PRE-14 release)
+  
+  Thanks to John for fixing the XML files to work with 1.10.
+
+  
+  kizura zgabi, >= 03/2005
+-->
+<wdbDef>
+  <wdbId name="questcache" />
+  <skipBytes numBytes="20" />  
+  <wdbElement name="wdb_ID" type="integer" />     <!-- #1 [quest ID]-->
+  <wdbElement name="wdb_RecLen" type="integer" /> <!-- #2 Defines the length of the record -->
+  <wdbElement name="wdb_QuestIDAgain" type="integer" /> <!-- #3 Again the ID of the quest -->
+  <wdbElement name="wdb_MinLevel" type="integer" /> <!-- #4 Min Level -->
+  <wdbElement name="wdb_MaxLevel" type="integer" /> <!-- #5 Max Level -->
+  <wdbElement name="wdb_ZoneId" type="integer" />   <!-- #6 Zone, see Appendix -->
+  <wdbElement name="wdb_Type" type="integer" />     <!-- #7 infoID, see QuestInfo.dbc -->
+	<wdbElement name="wdb_RequiredRepFaction" type="integer" /> <!-- #8 faction - You must have a reputation with this faction -->
+  <wdbElement name="wdb_RequiredRepValue" type="integer" />   <!-- #9 reputation - If != 0: Minimum reputation so the user can take the quest -->
+  <wdbElement name="wdb_Unknown04" type="integer" />
+  <wdbElement name="wdb_Unknown05" type="integer" />
+  <wdbElement name="wdb_NextQuestId" type="integer" />  <!-- #12 next_quest, only set, if != 0  -->
+  <wdbElement name="wdb_RewMoney" type="integer" />     <!-- #13 value in copper, if quest is completed -->
+  <wdbElement name="wdb_SubstitudeExp" type="integer" /><!-- #14 value in copper, coins rewarded on lvl 60 instead of XP -->
+  <wdbElement name="wdb_RewSpell" type="integer" />    <!-- #15 Players learns spell, if quest is completed -->
+  <wdbElement name="wdb_StartingItemID" type="integer" /> <!-- #16 Item that starts the quest -->
+  <wdbElement name="wdb_SpecialFlags" type="integer" /> <!-- #17 quest_flags   Only set, if value != 00 (hex)  -->
+  <wdbElement name="wdb_RewItemId1" type="integer" />   <!-- #18 See itemcache.wdb -->
+  <wdbElement name="wdb_RewItemCount1" type="integer" /><!-- #19 amount of items -->
+  <wdbElement name="wdb_RewItemId2" type="integer" />   <!-- #20 See itemcache.wdb -->
+  <wdbElement name="wdb_RewItemCount2" type="integer" />
+  <wdbElement name="wdb_RewItemId3" type="integer" />   <!-- #22 See itemcache.wdb -->
+  <wdbElement name="wdb_RewItemCount3" type="integer" />
+  <wdbElement name="wdb_RewItemId4" type="integer" />   <!-- #24 See itemcache.wdb -->
+  <wdbElement name="wdb_RewItemCount4" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemId1" type="integer" /> <!-- #26 See itemcache.wdb -->
+  <wdbElement name="wdb_RewChoiceItemCount1" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemId2" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemCount2" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemId3" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemCount3" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemId4" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemCount4" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemId5" type="integer" /> <!-- #34 See itemcache.wdb -->
+  <wdbElement name="wdb_RewChoiceItemCount5" type="integer" />
+  <wdbElement name="wdb_RewChoiceItemId6" type="integer" /> <!-- #36 See itemcache.wdb -->
+  <wdbElement name="wdb_RewChoiceItemCount6" type="integer" />
+
+  <wdbElement name="wdb_Unknown27" type="integer" /> <!-- #38 Unknown -->
+  <wdbElement name="wdb_Unknown28" type="integer" />  <!-- #39 Unknown -->
+  <wdbElement name="wdb_Unknown29" type="integer" />  <!-- #40 Unknown -->
+  <wdbElement name="wdb_Unknown30" type="integer" />  <!-- #41 Unknown -->
+
+  <wdbElement name="wdb_Title" type="varChar" /> <!-- #42 name, name of the quest -->
+  <wdbElement name="wdb_Objectives" type="varChar" /> <!-- #43 desc, short description -->
+  <wdbElement name="wdb_Details" type="varChar" /> <!-- #44 details -->
+  <wdbElement name="wdb_Subdescription" type="varChar" /> <!-- #45 second_desc -->
+
+  <wdbElement name="wdb_ReqKillMobOrGOId1" type="integer" />    <!-- #46 Kill this mob, "kill" in SCP, only set if value is != 0 -->
+  <wdbElement name="wdb_ReqKillMobOrGOCount1" type="integer" /> <!-- #47 Kill wdb_ReqKillMobOrGOId1 Mobs of type wdb_ReqKillMobOrGOCount1 -->
+  <wdbElement name="wdb_ReqItemId1" type="integer" />           <!-- #49 See itemcache.wdb, "deliver" in SCP, only set if value is != 0 -->
+  <wdbElement name="wdb_ReqItemCount1" type="integer" />        <!-- #49 Bring wdb_ReqItemCount1 items of type wdb_ReqItemId1 -->
+  <wdbElement name="wdb_ReqKillMobOrGOId2" type="integer" />   <!-- #50 -->
+  <wdbElement name="wdb_ReqKillMobOrGOCount2" type="integer" /><!-- #51 -->
+  <wdbElement name="wdb_ReqItemId2" type="integer" />          <!-- #52 -->
+  <wdbElement name="wdb_ReqItemCount2" type="integer" />       <!-- #53 -->
+  <wdbElement name="wdb_ReqKillMobOrGOId3" type="integer" />
+  <wdbElement name="wdb_ReqKillMobOrGOCount3" type="integer" /><!-- #55 -->
+  <wdbElement name="wdb_ReqItemId3" type="integer" />
+  <wdbElement name="wdb_ReqItemCount3" type="integer" />
+  <wdbElement name="wdb_ReqKillMobOrGOId4" type="integer" />
+  <wdbElement name="wdb_ReqKillMobOrGOCount4" type="integer" /><!-- #59 -->
+  <wdbElement name="wdb_ReqItemId4" type="integer" />          <!-- #60 -->
+  <wdbElement name="wdb_ReqItemCount4" type="integer" />
+
+  <wdbElement name="wdb_Objective1" type="varChar" /><!-- #60 If not killCreature1 or collectItem1 this is the objective if set -->
+  <wdbElement name="wdb_Objective2" type="varChar" /><!-- If not killCreature1 or collectItem1 this is the objective if set -->
+  <wdbElement name="wdb_Objective3" type="varChar" /><!-- If not killCreature1 or collectItem1 this is the objective if set -->
+  <wdbElement name="wdb_Objective4" type="varChar" /><!-- If not killCreature1 or collectItem1 this is the objective if set -->
+  
+  <!-- Appendix
+  #6 zone
+    see http://wow.allakhazam.com/dyn/mobs/byzone.html
+    see AreaTable.dbc if negative the value points to: QuestSort.dbc
+  
+  -->
+</wdbDef>

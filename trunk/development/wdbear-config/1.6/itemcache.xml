@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- items.scp
+  Config file, that describes the format of a WDB file.<br/>
+
+  Version: 1.6
+  Identical to 1.2
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping       - comment
+  -
+  integer        - java.sql.Types.Int       4 byte signed int
+  varChar        - java.sql.Types.VARCHAR   string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC   4 byte int value, gets hex encoded after read from WDB
+  single         - java.sql.Types.FLOAT     4 byte float, single precision
+                                            Stored inside database as Varchar() to preserve
+                                            precision.
+  -
+  kizura zgabi, >= 03/2005
+-->
+
+<wdbDef>
+  <wdbId name="itemcache" />
+  <skipBytes numBytes="20" />
+  <wdbElement name="wdb_ID" type="integer" />       <!-- #1 [item XY] -->
+  <wdbElement name="wdb_RecLen" type="integer" />   <!-- #2 Defines the length of the record -->
+  <wdbElement name="wdb_Class" type="integer" />    <!-- #3 class, see ItemClass.dbc -->
+  <wdbElement name="wdb_SubClass" type="integer" /> <!-- #4 class, see ItemSubClass.dbc -->
+  <wdbElement name="wdb_Name" type="varChar" />     <!-- #5 name -->
+  <wdbElement name="wdb_Name2" type="varChar" />    <!-- #6 name2 -->
+  <wdbElement name="wdb_Name3" type="varChar" />    <!-- #7 name3 -->
+  <wdbElement name="wdb_Name4" type="varChar" />    <!-- #8 name4 -->
+  <wdbElement name="wdb_DisplayID" type="integer" /> <!-- #9 See ItemDisplayInfo.dbc -->
+  <wdbElement name="wdb_Quality" type="integer" />         <!-- #10 quality, See Appendix -->
+  <wdbElement name="wdb_Flags" type="integer" />           <!-- #11 flags, hex encoded in items.scp, see Appendix -->
+  <wdbElement name="wdb_BuyPrice" type="integer" />      <!-- #12 buyprice, value in copper -->
+  <wdbElement name="wdb_SellPrice" type="integer" />     <!-- #13 sellprice, value in copper -->
+  <wdbElement name="wdb_InventoryType" type="integer" /> <!-- #14 inventorytype or inventorySlotID, see Appendix -->
+  <wdbElement name="wdb_Classes" type="integer" />       <!-- #15 classes, hex encoded in items.scp, eg 32767 means classes=07FFF, see Appendix -->
+  <wdbElement name="wdb_Races" type="integer" />         <!-- #16 races, hex encoded in items.scp, BitMask, see Appendix -->
+  <wdbElement name="wdb_ItemLevel" type="integer" />     <!-- #17 item base level -->
+  <wdbElement name="wdb_RequiredLevel" type="integer" />      <!-- #18 reqlevel, player requires this level to use the item -->
+  <wdbElement name="wdb_RequiredSkill" type="integer" /> <!-- #19 skill, SkillLine.dbc - Required Skill to use -->
+  <wdbElement name="wdb_RequiredSkillRank" type="integer" />   <!-- #20 skillrank, Level of skill needed-->
+  <wdbElement name="wdb_RequiredSpellID" type="integer" />     <!-- #21 Spell.dbc - Spell required to use the item -->
+  <wdbElement name="wdb_RequiredHonorRank" type="integer" />   <!-- #22  User needs this PVP rank to use the item -->
+  <wdbElement name="wdb_PVPRank2" type="integer" />            <!-- #23 PVPRank2 - Unknown entry, see Appendix -->
+  <wdbElement name="wdb_MaxCount" type="integer" />  <!-- #24 stackable, max numbers of items in a stack (stackAmount) -->
+  <wdbElement name="wdb_Stackable" type="integer" />   <!-- #25 Number of slots for a container-->
+  <wdbElement name="wdb_ContainerSlots" type="integer" />  <!-- #26 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Type1" type="integer" />
+  <wdbElement name="wdb_Stat_Value1" type="integer" />
+  <wdbElement name="wdb_Stat_Type2" type="integer" />    <!-- #29 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value2" type="integer" />
+  <wdbElement name="wdb_Stat_Type3" type="integer" />    <!-- #31 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value3" type="integer" />
+  <wdbElement name="wdb_Stat_Type4" type="integer" />    <!-- #33 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value4" type="integer" />
+  <wdbElement name="wdb_Stat_Type5" type="integer" />    <!-- #34 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value5" type="integer" />
+  <wdbElement name="wdb_Stat_Type6" type="integer" />    <!-- #35 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value6" type="integer" />
+  <wdbElement name="wdb_Stat_Type7" type="integer" />    <!-- #39 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value7" type="integer" />
+  <wdbElement name="wdb_Stat_Type8" type="integer" />    <!-- #41 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value8" type="integer" />
+  <wdbElement name="wdb_Stat_Type9" type="integer" />    <!-- #43 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value9" type="integer" />
+  <wdbElement name="wdb_Stat_Type10" type="integer" />   <!-- #45 StatTypes, see Appendix -->
+  <wdbElement name="wdb_Stat_Value10" type="integer" />
+  <wdbElement name="wdb_MinDamage1" type="single" /> <!-- damage; consists of wdb_MinDamage1 wdb_MaxDamage1 wdb_DamageType1 -->
+  <wdbElement name="wdb_MaxDamage1" type="single" /> <!-- used as "damage=wdb_MinDamage1 wdb_MaxDamage1 wdb_DamageType1" in SCP -->
+  <wdbElement name="wdb_Dmg_Type1" type="integer" /> <!-- See Appendix: Damage Types, Resistance.dbc -->
+  <wdbElement name="wdb_MinDamage2" type="single" /> <!-- damage; consists of wdb_MinDamage2 wdb_MaxDamage12 wdb_DamageType2 -->
+  <wdbElement name="wdb_MaxDamage2" type="single" /> <!-- #51 -->
+  <wdbElement name="wdb_Dmg_Type2" type="integer" />
+  <wdbElement name="wdb_MinDamage3" type="single" /> <!-- damage; consists of wdb_MinDamage3 wdb_MaxDamage3 wdb_DamageType3 -->
+  <wdbElement name="wdb_MaxDamage3" type="single" /> <!-- #54 -->
+  <wdbElement name="wdb_Dmg_Type3" type="integer" />
+  <wdbElement name="wdb_MinDamage4" type="single" /> <!-- damage; consists of wdb_MinDamage4 wdb_MaxDamage4 wdb_DamageType4 -->
+  <wdbElement name="wdb_MaxDamage4" type="single" /> <!-- #57 -->
+  <wdbElement name="wdb_Dmg_Type4" type="integer" />
+  <wdbElement name="wdb_MinDamage5" type="single" /> <!-- damage; consists of wdb_MinDamage5 wdb_MaxDamage5 wdb_DamageType5 -->
+  <wdbElement name="wdb_MaxDamage5" type="single" />
+  <wdbElement name="wdb_Dmg_Type5" type="integer" /> <!-- #61 -->
+  <wdbElement name="wdb_Armor" type="integer" />       <!-- #62 physical armor -->
+  <wdbElement name="wdb_Holy_Res" type="integer" />    <!-- #63 -->
+  <wdbElement name="wdb_Fire_Res" type="integer" />    <!-- #64 -->
+  <wdbElement name="wdb_Nature_Res" type="integer" />  <!-- #65 -->
+  <wdbElement name="wdb_Frost_Res" type="integer" />   <!-- #66 -->
+  <wdbElement name="wdb_Shadow_Res" type="integer" />  <!-- #67 -->
+  <wdbElement name="wdb_Arcance_Res" type="integer" /> <!-- #68 -->
+  <wdbElement name="wdb_Delay" type="integer" />       <!-- #69 weapon speed in ms -->
+  <wdbElement name="wdb_RangeModifier" type="single" /> <!-- #70 This float value seems to indicate the base value for range of ranged weapons. Ranged Weapons = 100.0, Fishing Poles = 3.0 -->
+  <wdbElement name="wdb_SpellID1" type="integer" />    <!-- #71 see Spell.dbc -->
+  <wdbElement name="wdb_Spelltrigger1" type="integer" /> <!-- #72, SpellTriggerTypes, see Appendix -->
+  <wdbElement name="wdb_SpellCharges1" type="integer" />
+  <wdbElement name="wdb_SpellCooldown1" type="integer" />
+  <wdbElement name="wdb_SpellCategory1" type="integer" /> <!-- #75 see SpellCategory.dbc -->
+  <wdbElement name="wdb_SpellCategoryCooldown1" type="integer" />
+  <wdbElement name="wdb_SpellID2" type="integer" />      <!-- #77 see Spell.dbc -->
+  <wdbElement name="wdb_Spelltrigger2" type="integer" />
+  <wdbElement name="wdb_SpellCharges2" type="integer" />
+  <wdbElement name="wdb_SpellCooldown2" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown2" type="integer" />
+  <wdbElement name="wdb_SpellCategory2" type="integer" />
+  <wdbElement name="wdb_SpellID3" type="integer" />      <!-- #83 see Spell.dbc -->
+  <wdbElement name="wdb_Spelltrigger3" type="integer" />
+  <wdbElement name="wdb_SpellCharges3" type="integer" />
+  <wdbElement name="wdb_SpellCooldown3" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown3" type="integer" />
+  <wdbElement name="wdb_SpellCategory3" type="integer" />
+  <wdbElement name="wdb_SpellID4" type="integer" />      <!-- #89 see Spell.dbc -->
+  <wdbElement name="wdb_Spelltrigger4" type="integer" />
+  <wdbElement name="wdb_SpellCharges4" type="integer" />
+  <wdbElement name="wdb_SpellCooldown4" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown4" type="integer" />
+  <wdbElement name="wdb_SpellCategory4" type="integer" />
+  <wdbElement name="wdb_SpellID5" type="integer" />     <!-- #95 see Spell.dbc -->
+  <wdbElement name="wdb_Spelltrigger5" type="integer" />
+  <wdbElement name="wdb_SpellCharges5" type="integer" />
+  <wdbElement name="wdb_SpellCooldown5" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown5" type="integer" />
+  <wdbElement name="wdb_SpellCategory5" type="integer" />
+
+  <wdbElement name="wdb_Bonding" type="integer" />     <!-- #101 Bind_Types, see Appendix -->
+  <wdbElement name="wdb_Description" type="varChar" />
+  <wdbElement name="wdb_PageText" type="integer" /> <!-- refers to pagetextcache.wdb -->
+  <wdbElement name="wdb_LanguageID" type="integer" />
+  <wdbElement name="wdb_PageMaterial" type="integer" /> <!-- #105 see PageTextMaterial.dbc -->
+  <wdbElement name="wdb_StartQuest" type="integer" />   <!-- #106, Items starts a quest, see questcache.wdb -->
+  <wdbElement name="wdb_LockID" type="integer" />       <!-- #107, For locked items, this is the skill needed to pick it. -->
+  <wdbElement name="wdb_Material" type="integer" /> <!-- #108 see Materials.dbc -->
+  <wdbElement name="wdb_Sheath" type="integer" />   <!-- #109 sheath -->
+  <wdbElement name="wdb_Extra" type="integer" /> <!-- #110 -->
+  <wdbElement name="wdb_Block" type="integer" />  <!-- #111 Adds blocking for shield -->
+  <wdbElement name="wdb_MaxDurability" type="integer" />
+</wdbDef>

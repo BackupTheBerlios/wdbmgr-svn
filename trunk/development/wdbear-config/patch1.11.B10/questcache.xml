@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Config file, that describes the format of a WDB file.<br/>
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping        - comment
+  -
+  tinyInt        - java.sql.Types.TinyInt    1 byte signed int
+  smallInt       - java.sql.Types.SmallInt   Short (2 byte signed int)
+  integer        - java.sql.Types.Int        Integer (4 byte signed int)
+  varChar        - java.sql.Types.VARCHAR    string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC    4 byte int value, gets hex encoded
+                                             after read from WDB (Stored as
+                                             HEX inside database)
+  single         - java.sql.Types.FLOAT      4 byte float, single precision
+                                             Stored inside database as Varchar()
+                                             to preserve precision.
+  char, size     - java.sql.Types.CHAR       string, fixed width
+                   eg:   <wdbElement name="wdb_Text" type="char" size="20"/>
+                   BEWARE:
+                   Internal encoding of WDB is UTF-8 *but* you can only specify the
+                   number of bytes here. This can significantly differ
+                   (eg german "ß" is 2 bytes)
+  -
+  
+  For PRE-1.6.0, the WDB files contain an ID of 16 bytes
+  1.6.0 - ID is 20 bytes
+  
+  Please use "skipBytes" to set the length of the ID
+  (Thanks to andrikos for this hint.)
+  
+  kizura zgabi, >= 03/2005
+-->
+<wdbDef>
+  <wdbId name="questcache" />
+  <skipBytes numBytes="20" />
+  <!-- [quest ID]-->
+  <wdbElement name="wdb_ID" type="integer" />
+  <wdbElement name="wdb_RecLen" type="integer" />
+  <wdbElement name="wdb_QuestIDAgain" type="integer" />
+  <!-- levels=a b
+       level=b
+       (level: always has the value of wdb_levelsb)
+   -->
+  <wdbElement name="wdb_levelsa" type="integer" />
+  <wdbElement name="wdb_levelsb" type="integer" />
+  <!-- zone, see http://wow.allakhazam.com/dyn/mobs/byzone.html -->
+  <wdbElement name="wdb_Zone" type="integer" />
+  <wdbElement name="wdb_Unknown01" type="integer" />
+	<!-- faction
+	Only set if != 0
+	-->
+  <wdbElement name="wdb_Unknown02" type="integer" />
+  <!-- reputation
+	Only set if != 0
+	-->
+  <wdbElement name="wdb_Unknown03" type="integer" />
+  <wdbElement name="wdb_Unknown04" type="integer" />
+  <wdbElement name="wdb_Unknown05" type="integer" />
+  <!-- next_quest
+  Only set, if wdb_next_quest != 0
+   -->
+  <wdbElement name="wdb_LeadsTo" type="integer" />
+  <wdbElement name="wdb_RewardGold" type="integer" />
+  <wdbElement name="wdb_Unknown07" type="integer" />
+  <wdbElement name="wdb_Teaches" type="integer" />
+  <!-- quest_flags
+  Only set, if value != 00 (hex)
+  -->
+  <wdbElement name="wdb_QuestFlags" type="integer" />
+  <wdbElement name="wdb_Unknown10" type="integer" />
+  <!-- reward_item=wdb_reward_item1a wdb_reward_item1b
+  wdb_reward_item1a -> item
+  wdb_reward_item1b -> number of items
+  Also includes wdb_Unk11, wdb_Unk12
+  and wdb_Unk13, wdb_Unk14
+  Only set, if value != 0
+  -->
+  <wdbElement name="wdb_RewardItem1a" type="integer" />
+  <wdbElement name="wdb_RewardItem1b" type="integer" />
+  <wdbElement name="wdb_RewardItem2a" type="integer" />
+  <wdbElement name="wdb_RewardItem2b" type="integer" />
+
+  <wdbElement name="wdb_Unknown11" type="integer" />
+  <wdbElement name="wdb_Unknown12" type="integer" />
+  <wdbElement name="wdb_Unknown13" type="integer" />
+  <wdbElement name="wdb_Unknown14" type="integer" />
+  <!-- reward_choice=wdb_reward_choice1a wdb_reward_choice1b
+  wdb_reward_choice1a -> item number
+  wdb_reward_choice1b -> number of items
+  Can occur up to 6 times
+  Only set, if value != 0
+  Hint:
+         wdb_Unknown23 - wdb_Unknown26 are choice 5 and 6
+     -->
+  <wdbElement name="wdb_RewardChoice1a" type="integer" />
+  <wdbElement name="wdb_RewardChoice1b" type="integer" />
+  <wdbElement name="wdb_RewardChoice2a" type="integer" />
+  <wdbElement name="wdb_RewardChoice2b" type="integer" />
+  <wdbElement name="wdb_RewardChoice3a" type="integer" />
+  <wdbElement name="wdb_RewardChoice3b" type="integer" />
+  <wdbElement name="wdb_RewardChoice4a" type="integer" />
+  <wdbElement name="wdb_RewardChoice4b" type="integer" />
+  <wdbElement name="wdb_Unknown23" type="integer" />
+  <wdbElement name="wdb_Unknown24" type="integer" />
+  <wdbElement name="wdb_Unknown25" type="integer" />
+  <wdbElement name="wdb_Unknown26" type="integer" />
+  <!-- wdb_Unknown27 - wdb_Unknown30 = position
+   position=wdb_position0 wdb_position1 wdb_position3 wdb_position4
+  Only set, if wdb_position1 != 0
+  (wdb_position0 seems always to be 0)
+  -->
+  <wdbElement name="wdb_Unknown27" type="integer" />
+  <wdbElement name="wdb_Unknown28" type="single" />
+  <wdbElement name="wdb_Unknown29" type="single" />
+  <wdbElement name="wdb_Unknown30" type="single" />
+  <!-- name, name of the quest -->
+  <wdbElement name="wdb_Name" type="varChar" />
+  <!-- desc, short description
+    Only set, when string is not empty.
+  -->
+  <wdbElement name="wdb_Desc1" type="varChar" />
+  <!-- details
+       You can use "objectives" instead of details or both (seems to work)
+  Only set, when string is not empty.
+  -->
+  <wdbElement name="wdb_Desc2" type="varChar" />
+  <!-- second_desc
+  Only set, when string is not empty.
+   -->
+  <wdbElement name="wdb_Desc3" type="varChar" />
+  <wdbElement name="wdb_Unknown31" type="integer" />
+  <wdbElement name="wdb_Unknown32" type="integer" />
+  <!-- deliver= wdb_RequiredItem1a wdb_RequiredItem1b
+          wdb_RequiredItem1a = number of items
+          wdb_RequiredItem1b = item id
+  		 Meaning: Bring <wdb_RequiredItem1a> items of type <wdb_RequiredItem1b>
+  Only set, if value != 0
+       kill=wdb_RelatedMob1a wdb_RelatedMob1b
+          wdb_RelatedMob1b = number of mobs
+          wdb_RelatedMob1b = mob id
+  		 Meaning: Kill <wdb_RelatedMob1b> creatures of type
+  		 <wdb_RelatedMob1b>
+  Only set, if value != 0
+  -->
+  <wdbElement name="wdb_RequiredItem1a" type="integer" />
+  <wdbElement name="wdb_RequiredItem1b" type="integer" />
+  <wdbElement name="wdb_RelatedMob1a" type="integer" />
+  <wdbElement name="wdb_RelatedMob1b" type="integer" />
+  <!-- deliver= wdb_RequiredItem2a wdb_RequiredItem2b
+          wdb_RequiredItem2a = number of items
+          wdb_RequiredItem2b = item id
+  		 Meaning: Bring <wdb_RequiredItem2a> items of type <wdb_RequiredItem2b>
+  Only set, if value != 0
+       kill=wdb_RelatedMob2a wdb_RelatedMob2b
+          wdb_RelatedMob2b = number of mobs
+          wdb_RelatedMob2b = mob id
+  		 Meaning: Kill <wdb_RelatedMob2b> creatures of type
+  		 <wdb_RelatedMob2b>
+  Only set, if value != 0
+  -->
+  <wdbElement name="wdb_RequiredItem2a" type="integer" />
+  <wdbElement name="wdb_RequiredItem2b" type="integer" />
+  <wdbElement name="wdb_RelatedMob2a" type="integer" />
+  <wdbElement name="wdb_RelatedMob2b" type="integer" />
+  <!-- deliver= wdb_RequiredItem3a wdb_RequiredItem3b
+          wdb_RequiredItem3a = number of items
+          wdb_RequiredItem3b = item id
+  		 Meaning: Bring <wdb_RequiredItem3a> items of type <wdb_RequiredItem3b>
+  Only set, if value != 0
+       kill=wdb_RelatedMob3a wdb_RelatedMob3b
+          wdb_RelatedMob3b = number of mobs
+          wdb_RelatedMob3b = mob id
+  		 Meaning: Kill <wdb_RelatedMob3b> creatures of type
+  		 <wdb_RelatedMob3b>
+  Only set, if value != 0
+  -->
+  <wdbElement name="wdb_RequiredItem3a" type="integer" />
+  <wdbElement name="wdb_RequiredItem3b" type="integer" />
+  <wdbElement name="wdb_RelatedMob3a" type="integer" />
+  <wdbElement name="wdb_RelatedMob3b" type="integer" />
+  <!-- deliver= wdb_RequiredItem4a wdb_RequiredItem4b
+          wdb_RequiredItem4a = number of items
+          wdb_RequiredItem4b = item id
+  		 Meaning: Bring <wdb_RequiredItem4a> items of type <wdb_RequiredItem4b>
+  Only set, if value != 0
+       kill=wdb_Objective1 wdb_Objective2
+          wdb_Objective1 = number of mobs
+          wdb_Objective2 = mob id
+  		 Meaning: Kill <wdb_Objective1> creatures of type
+  		 <wdb_Objective2>
+  Only set, if value != 0
+  -->
+  <wdbElement name="wdb_RequiredItem4a" type="integer" />
+  <wdbElement name="wdb_RequiredItem4b" type="integer" />
+  <wdbElement name="wdb_Objective1" type="varChar" />
+  <wdbElement name="wdb_Objective2" type="varChar" />
+
+  <wdbElement name="wdb_Objective3" type="varChar" />
+  <wdbElement name="wdb_Objective4" type="varChar" />
+</wdbDef>

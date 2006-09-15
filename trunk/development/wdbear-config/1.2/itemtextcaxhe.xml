@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wdbDef>
+  <wdbId name="itemtextcaxhe" />
+  <wdbElement name="wdb_Unk1" type="integer" />
+  <wdbElement name="wdb_Unk2" type="integer" />
+</wdbDef>

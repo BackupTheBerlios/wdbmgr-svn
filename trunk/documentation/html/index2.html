@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>English</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 1.1.3  (Win32)">
+	<META NAME="CREATED" CONTENT="20050409;15130503">
+	<META NAME="CHANGEDBY" CONTENT="Gerhard Leibrock">
+	<META NAME="CHANGED" CONTENT="20050409;15130556">
+	<STYLE>
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm }
+		P.western { font-family: "Arial", sans-serif }
+		H4 { margin-bottom: 0.21cm }
+		H4.western { font-family: "Arial", sans-serif; font-size: 11pt; font-style: italic }
+		H4.cjk { font-family: "MS Mincho"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-size: 11pt; font-style: italic }
+		H3 { margin-bottom: 0.21cm }
+		H3.western { font-family: "Arial", sans-serif }
+		H3.cjk { font-family: "MS Mincho" }
+		H2 { margin-bottom: 0.21cm }
+		H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+		H2.cjk { font-family: "MS Mincho"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-size: 14pt; font-style: italic }
+		H1 { margin-bottom: 0.21cm }
+		H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+		H1.cjk { font-family: "MS Mincho"; font-size: 16pt }
+		H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<H1 CLASS="western" STYLE="page-break-before: always">English</H1>
+<P CLASS="western" STYLE="margin-bottom: 0cm">WoWWDBManager is
+designed to handle the information found inside the WDB files stored
+inside the client's cache.</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm">WDB files are
+transferred during playing on a WoW server and are stored inside the
+WDB folder. Using this caching strategy helps blizzard to reduce the
+network traffic.<BR><BR>The WoW Client contains the whole world, but
+no quests, npcs or mobs. These information is transferred from the
+server to the client. And the client caches these information.</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>With WoWWDBManager
+you can:<BR><BR>
+</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Create a CSV file
+	from your WDB files</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Create a TXT file
+	from your WDB files</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Store the WDB
+	information in a SQL database (getestet mit Hypersonic, Oracle und
+	MySQL)</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Patching existing
+	*.scp files with the information from your database</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Start the program
+	using the console, gui or scripting version</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Enhance the
+	program using Jython scripts<BR>(You have full access to the WDB
+	database using Jython!)</P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>Kizura
+Zgabi<BR>lousy.kizura@gmail.com<A HREF="mailto:kizroot007@yahoo.com"><BR></A><BR>
+</P>
+<H2 CLASS="western" STYLE="page-break-before: always">Installation</H2>
+<H3 CLASS="western"><BR>You need</H3>
+<P CLASS="western" STYLE="margin-bottom: 0cm">Linux or Win32
+environment (Others may work, too, but are not tested)<BR>Java 1.4.2
+installed<BR><BR>
+</P>
+<H3 CLASS="western">Steps</H3>
+<P CLASS="western" STYLE="margin-bottom: 0cm">(Win32)<BR>Unzip the
+archive<BR>Open msdos prompt<BR>Change to the installation
+folder<BR><BR>Invoke the program:</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm">	java -jar
+obf_wowwdbmanager.jar<BR><BR>Output:<BR><IMG SRC="index2_html_m59afdf49.png" NAME="Grafik5" ALIGN=BOTTOM WIDTH=642 HEIGHT=359 BORDER=0></P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR><BR><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm; page-break-before: always">
+Usage<BR><BR>Parameter</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">csvfolder &lt;folder&gt;
+	<BR>Specifiy the folder for the CSV export.<BR>If you want to create
+	a CSV file, you must provide the output directory.<BR>Needs
+	&quot;<FONT FACE="Courier New, monospace">wdbfile&quot;</FONT>
+	parameter.</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm"> gui<BR>Start the
+	graphical user interface, all other parameters are ignored.</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">J<BR>Define
+	Parameters for a Jython script. Syntax: &quot;-Jparam=value&quot;</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">script<BR>Call
+	this Jython script. This script is invoked in the context of the
+	WDBManager and receives the variable &quot;<FONT FACE="Courier New, monospace">wdmgrapi</FONT>&quot;,
+	which is an instance of &quot;<FONT FACE="Courier New, monospace">WoWWDBManager_I</FONT>&quot;.
+	(Please refer to JavaDocs)</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">storeDB<BR>Save
+	the values from the WDB file inside the database<BR>Needs &quot;<FONT FACE="Courier New, monospace">wdbfile&quot;</FONT>
+	parameter.<BR><BR>
+	</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">txtfolder
+	&lt;ordner&gt;<BR>Specify the folder for TXT export..<BR>If you want
+	to create a TXT file, you must provide the output directory.. The
+	TXT file can be used for debugging.<BR>Needs &quot;<FONT FACE="Courier New, monospace">wdbfile&quot;</FONT>
+	parameter.</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">update<BR>Use
+	&quot;<FONT FACE="Courier New, monospace">update</FONT>&quot; if you
+	also want to update entries inside the database. Otherwise existing
+	entries are ignored (insert only).<BR>Needs &quot;<FONT FACE="Courier New, monospace">wdbfile&quot;</FONT>
+	parameter.</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">verbose<BR>Switch
+	to verbose mode, displays more info (console).</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">wdbfile<BR>Specify
+	the complete path to the WDB file.</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">SCPName
+	&lt;myFile.scp&gt;<BR>Name of the SCP file that should be
+	patched.<BR>The information stored inside the database are used to
+	replace the entries inside the SCP
+	file.<BR>Creates:<BR>&quot;&lt;myFile.scp&gt;_patch&ldquo; Contains
+	the patched SCP file<BR>&quot;&lt;myFile.scp&gt;_patch_info&quot;
+	Contains information about the patch process</P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm; page-break-before: always">
+Examples</P>
+<H3 CLASS="western">Create CSV file from a WDB file</H3>
+<P CLASS="western"><BR>java -jar obf_wowwdbmanager.jar -wdbfile
+c:\temp\wdb\questcache.wdb -csvfolder <A HREF="file:///c:/meine_csvs">c:\meine_csvs</A></P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Create TXT file from a WDB file</H3>
+<P CLASS="western"><BR>java -jar obf_wowwdbmanager.jar -wdbfile
+c:\temp\wdb\questcache.wdb -txtfolder <A HREF="./c:\meine_txts">c:\meine_txts</A></P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Create a CSV and a TXT file from a WDB file</H3>
+<P CLASS="western"><BR>java -jar obf_wowwdbmanager.jar -wdbfile
+c:\temp\wdb\questcache.wdb -csvfolder <A HREF="file:///c:/meine_csvs">c:\meine_csvs
+</A>-txtfolder <A HREF="./c:\meine_txts">c:\meine_txts<BR></A><BR><BR>
+</P>
+<H3 CLASS="western">Store contents of a WDB file inside a database
+(incl. update)</H3>
+<P CLASS="western"><BR>java -jar obf_wowwdbmanager.jar -wdbfile
+c:\temp\wdb\questcache.wdb -storeDB -update<BR><BR><BR>
+</P>
+<H3 CLASS="western">Create a patched *.scp file</H3>
+<P CLASS="western">Replaces values inside an existing quests.scp,
+items.scp, etc. with values from your database. What should be
+replaced is configured inside &quot;patchSCP.xml&quot; and can be
+changed by the user. Please note that patching &quot;multi value&quot;
+attributes does not work (eg level=1 4)</P>
+<P CLASS="western">Values for &quot;<FONT FACE="Courier New, monospace">patchSCP</FONT>&quot;:
+quests, items, creatures, pages<BR><BR><FONT FACE="Courier New, monospace">java
+-jar obf_wowwdbmanager.jar -patchSCP quests -SCPname
+/tmp/myQuests.scp</FONT><BR><BR><BR>
+</P>
+<H3 CLASS="western">Starting the graphical user interface (gui)</H3>
+<P CLASS="western"><BR><FONT FACE="Courier New, monospace">java -jar
+obf_wowwdbmanager.jar -gui</FONT><BR><BR><BR><BR>
+</P>
+<H2 CLASS="western" ALIGN=CENTER STYLE="page-break-before: always"><IMG SRC="index2_html_md2ac7bc.png" NAME="Grafik6" ALIGN=BOTTOM WIDTH=614 HEIGHT=463 BORDER=0></H2>
+<H3 CLASS="western">Calling a Jython script</H3>
+<P CLASS="western"><FONT FACE="Courier New, monospace">java -jar
+obf_wowwdbmanager.jar -script c:\temp\myScript.jy -Jnose=bear</FONT><BR><BR>Call
+the script &quot;<FONT FACE="Courier New, monospace">c:\temp\myScript.jy</FONT>&quot;
+and pass the parameter &quot;<FONT FACE="Courier New, monospace">nose</FONT>&quot;
+with the value &quot;<FONT FACE="Courier New, monospace">bear</FONT>&quot;.
+Now your Jython script has a variable called &quot;<FONT FACE="Courier New, monospace">nose</FONT>&quot;
+with the value &quot;<FONT FACE="Courier New, monospace">bear</FONT>&quot;.<BR><BR><BR><BR>
+</P>
+<H3 CLASS="western">Database configuration</H3>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>WoWWDBManager
+supports 3 types of databases:<BR><BR>
+</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Oracle (9i tested)</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">MySQL</P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">Hypersonic SQL
+	Datenbank 1.7.3<BR>(included)</P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR><FONT FACE="Courier New, monospace">wdbmanager_sql.properties<BR></FONT><BR>
+</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=256*>
+	<THEAD>
+		<TR>
+			<TD WIDTH=100% VALIGN=TOP>
+				<P CLASS="western"><FONT SIZE=2><FONT FACE="Courier New">#<BR>#
+				Config file for the SQL storeage module<BR># (Class implements
+				I_StoreWDB)<BR>#<BR>#<BR># The ManagePP_SQL module
+				stores/retrieves the data<BR># from a SQL database.<BR>#<BR>#
+				jdbcurl    - JDBC URL to access the database<BR># jdbcdriver -
+				Use this class to access the database<BR># username   - username
+				to access the database<BR># password   - password to access the
+				database<BR># dbprefix   - all created tables use this prefix
+				(eg: myprefix_table)<BR>#<BR># Important:<BR># The database user
+				MUST have the right to create tables!<BR>#<BR># kizura zgabi,
+				march
+				2005<BR></FONT></FONT><BR><FONT SIZE=2><FONT FACE="Courier New">jdbcurl=jdbc:hsqldb:hsql://localhost<BR>jdbcdriver=org.hsqldb.jdbcDriver<BR>username=sa<BR>password=wdbpasswd<BR>dbprefix=wowwdb_<BR><BR>#
+				mySQL<BR>#jdbcurl=jdbc:mysql://localhost/meinedatenbank<BR>#jdbcdriver=com.mysql.jdbc.Driver<BR>#username=mysqlUser<BR>#password=mysqlPass<BR><BR>#oracle<BR>#jdbcurl=jdbc:oracle:thin:@mydbhost.somewhere.org:1521:SID<BR>#jdbcdriver=oracle.jdbc.driver.OracleDriver<BR>#username=oraUser<BR>#password=oraPass<BR></FONT></FONT><BR>
+				</P>
+			</TD>
+		</TR>
+	</THEAD>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H4 CLASS="western">Using Hypersonic SQL database (included)</H4>
+<P CLASS="western">Pre:<BR><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-left: 2cm">Suffix .bat &ndash;
+Script for Win32<BR>Suffix .sh &ndash; Script for Linux<BR><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm">You find the script
+&bdquo;<FONT FACE="Courier New, monospace">start_hsqldb</FONT>&ldquo;.in
+your installation directory.<BR>This script will start the hypersonic
+SQL database.<BR>(You can access this database with JDBC, username
+and password can be found in the file<BR><FONT FACE="Courier New, monospace">wdbmanager_sql.properties</FONT>
+zu entnehmen.<BR><BR>If you want to access other databases, please
+adjust the script &bdquo;<FONT FACE="Courier New, monospace">wdbmanager_sql.properties</FONT>&ldquo;.<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><IMG SRC="index2_html_67f171e7.png" NAME="Grafik7" ALIGN=BOTTOM WIDTH=642 HEIGHT=325 BORDER=0></P>
+<P CLASS="western" STYLE="margin-bottom: 0cm">Starting the hypersonic
+SQL database<BR><BR>
+</P>
+<H2 CLASS="western">Config-files</H2>
+<P CLASS="western"><BR>Description of the WDB files</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">creaturecache.xml</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">gameobjectcache.xml</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">itemcache.xml</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">itemnamecache.xml</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">itemtextcaxhe.xml</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">npccache.xml</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">pagetextcache.xml</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm">questcache.xml</P>
+</UL>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><BR></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: always">
+	<COL WIDTH=256*>
+	<TR>
+		<TD WIDTH=100% VALIGN=TOP>
+			<P CLASS="western"><FONT FACE="Courier New"><FONT SIZE=2>&lt;?xml
+			version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<BR>&lt;!--
+			pages.scp<BR>  Config file, that describes the format of a WDB
+			file.&lt;br/&gt;<BR><BR>  Changes to this file will affect the
+			application!<BR>  !Beware!<BR><BR>  possible types - internal
+			mapping       - comment<BR>  -<BR>  bigInt         -
+			java.sql.Types.BigInt    4 byte signed int<BR>  varChar        -
+			java.sql.Types.VARCHAR   string, ends with NULL<BR>  bigIntHex    
+			 - java.sql.Types.NUMERIC   4 byte int value, gets<BR>            
+			                               hex encoded after read from WDB<BR>
+			 single         - java.sql.Types.FLOAT     4 byte float, single
+			precision<BR>                                            Stored
+			inside database as Varchar()<BR>                                  
+			         to preserve<BR>                                          
+			 precision.<BR><BR>  kizura zgabi, &gt;= 03/2005<BR>--&gt;<BR>&lt;wdbDef&gt;<BR>
+			 &lt;wdbId name=&quot;pagetextcache&quot; /&gt;<BR>  &lt;wdbElement
+			name=&quot;wdbd_PageId&quot; type=&quot;bigInt&quot; /&gt;<BR> 
+			&lt;wdbElement name=&quot;wdbd_RecLen&quot; type=&quot;bigInt&quot;
+			/&gt;<BR>  &lt;wdbElement name=&quot;wdbd_Text&quot;
+			type=&quot;varChar&quot; /&gt;<BR>  &lt;wdbElement
+			name=&quot;wdbd_nextPageId&quot; type=&quot;bigInt&quot;
+			/&gt;<BR>&lt;/wdbDef&gt;</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>pagetextcache.xml<BR><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0>
+		<COL WIDTH=128*>
+		<COL WIDTH=128*>
+		<TR VALIGN=TOP>
+			<TD WIDTH=50%>
+				<P STYLE="margin-bottom: 0cm"><FONT SIZE=3>WoWWDB-Manager by
+				Kizura ZGabi</FONT></P>
+				<P><FONT SIZE=3>Version: Version <SPAN STYLE="font-weight: medium">PRE
+				9 &ndash; &quot;die goldene Kettet&quot;</SPAN></FONT></P>
+			</TD>
+			<TD WIDTH=50%>
+				<P ALIGN=RIGHT>Seite <SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE></SDFIELD></P>
+			</TD>
+		</TR>
+	</TABLE>
+	<P STYLE="margin-bottom: 0cm"><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>

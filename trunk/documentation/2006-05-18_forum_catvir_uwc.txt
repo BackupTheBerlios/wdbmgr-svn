@@ -1,0 +1,50 @@
+Hi,
+
+I developped a program with the help of many others to read
+the contents of the WDB folder.
+The project exists since > 1 year.
+
+<please ignore if you already know about WDB>
+The WDB folder is a client cache that contains parts the information
+that bli$$ sends to your client.
+The w0w server sends information to your client.
+The client saves parts of this information inside the WDB folder to reduce network traffic (Infos about quests, items, npcs, etc). This program enables the user to read the information stored there.
+</please ignore if you already know about WDB>
+
+With the latest version 1.0 you can read all WDB files from version 1.2
+till 1.10. If bli$$ releases a new WDB format, you can enhance the client
+with XML files to understand the new format.
+
+The project is OpenSource (GPL) and it is my contribute to the
+community.
+If you like the program, please donate money to a charity organization
+of your choice.
+
+Project home:
+http://developer.berlios.de/projects/wdbmgr/
+
+Forum:
+http://www.wdbmanager.de.gg/
+
+Main features:
+Can be used as a GUI or console application.
+Runs with Linux and Win32 (Other Java platforms not tested)
+Needs JDK 1.4.2.x
+Stores data inside SQL database (Hypersonic included, MySQL supported)
+Can be enhanced using Jython scripting language
+English/German manual included (PDF and OpenOffice format, depends
+on source or binary distribution).
+Export database in WDBTXT format
+Import/Merge existing WDBTXT formats
+Seperates data by client locale (eg: enUS, enGB, deDE)
+
+How to d/l:
+
+Get the 1.0 CORE
+Get the PRE-14 BASE
+Unzip them inside the same directory
+
+Please refer to the wdbearmanager's forum for any questions.
+
+gl, hf
+kizura

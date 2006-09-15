@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Allow the application to store runtime data.
+
+Eg
+
+APPVERSION - Version number (float, but written as varchar)
+
+lousy.kizura@gmail.com
+
+-->
+<wdbDef>
+  <wdbId name="wdb_params" />
+  <!-- param -->
+  <wdbElement name="wdb_param" type="varChar" />
+  <!-- value -->
+  <wdbElement name="wdb_value" type="varChar" />
+</wdbDef>

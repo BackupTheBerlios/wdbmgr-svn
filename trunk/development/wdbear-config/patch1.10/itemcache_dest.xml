@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Config file, that describes the format of a WDB file.<br/>
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping        - comment
+  -
+  tinyInt        - java.sql.Types.TinyInt    1 byte signed int
+  smallInt       - java.sql.Types.SmallInt   Short (2 byte signed int)
+  integer        - java.sql.Types.Int        Integer (4 byte signed int)
+  varChar        - java.sql.Types.VARCHAR    string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC    4 byte int value, gets hex encoded
+                                             after read from WDB (Stored as
+                                             HEX inside database)
+  single         - java.sql.Types.FLOAT      4 byte float, single precision
+                                             Stored inside database as Varchar()
+                                             to preserve precision.
+  char, size     - java.sql.Types.CHAR       string, fixed width
+                   eg:   <wdbElement name="wdb_Text" type="char" size="20"/>
+                   BEWARE:
+                   Internal encoding of WDB is UTF-8 *but* you can only specify the
+                   number of bytes here. This can significantly differ
+                   (eg german "" is 2 bytes)
+  -
+  
+  For PRE-1.6.0, the WDB files contain an ID of 16 bytes
+  1.6.0 - ID is 20 bytes
+  
+  Please use "skipBytes" to set the length of the ID
+  (Thanks to andrikos for this hint.)
+  
+  Thanks to Steve from Belgium for the hint with itemcache.wdb
+  (Sorry I messed this up with the PRE-14 release)
+  
+  Thanks to John for fixing the XML files to work with 1.10.
+  
+
+  kizura zgabi, >= 03/2005
+-->
+
+<wdbDef>
+  <wdbId name="itemcache" />
+  <skipBytes numBytes="20" />
+  <wdbElement name="wdb_ID" type="integer" />
+  <wdbElement name="wdb_RecLen" type="integer" />
+  <!-- class -->
+  <wdbElement name="wdb_Class" type="integer" />
+  <!-- subclass -->
+  <wdbElement name="wdb_SubClass" type="integer" />
+  <!-- name AND name1 -->
+  <wdbElement name="wdb_InventoryName" type="varChar" />
+  <!-- questname -->
+  <wdbElement name="wdb_QuestName" type="varChar" />
+  <!-- name3 -->
+  <wdbElement name="wdb_Name3" type="varChar" />
+  <!-- name4 -->
+  <wdbElement name="wdb_Name4" type="varChar" />
+  <!-- model -->
+  <wdbElement name="wdb_IconID" type="integer" />
+  <!-- quality -->
+  <wdbElement name="wdb_Quality" type="integer" />
+  <!-- flags, hex encoded in items.scp -->
+  <wdbElement name="wdb_Flags" type="integer" />
+  <!-- buyprice -->
+  <wdbElement name="wdb_BuyPrice" type="integer" />
+  <!-- sellprice -->
+  <wdbElement name="wdb_SellPrice" type="integer" />
+  <!-- inventorytype -->
+  <wdbElement name="wdb_InventoryType" type="integer" />
+  <!-- classes, hex encoded in items.scp, eg 32767 means classes=07FFF -->
+  <wdbElement name="wdb_Classes" type="bigIntHex" />
+  <!-- races, hex encoded in items.scp -->
+  <wdbElement name="wdb_Races" type="bigIntHex" />
+  <!-- level -->
+  <wdbElement name="wdb_ItemLevel" type="integer" />
+  <!-- reqlevel -->
+  <wdbElement name="wdb_MinLevel" type="integer" />
+  <!-- skill -->
+  <wdbElement name="wdb_RequiredSkill" type="integer" />
+  <!-- skillrank -->
+  <wdbElement name="wdb_RequiredSkillRank" type="integer" />
+  <!-- maxcount -->
+  <wdbElement name="wdb_MaxCount" type="integer" />
+  <!--  -->
+  <wdbElement name="wdb_PVPRank1" type="integer" />
+  <wdbElement name="wdb_PVPRank2" type="integer" />
+  <!-- delay -->
+  <wdbElement name="wdb_Delay" type="integer" />
+  <wdbElement name="wdb_Unk70" type="integer" />
+  <wdbElement name="wdb_UniqueFlag" type="integer" />
+  <!-- stackable -->
+  <wdbElement name="wdb_Stackable" type="integer" />
+  <wdbElement name="wdb_ContainerSlots" type="integer" />
+  <wdbElement name="wdb_BonusStat1" type="integer" />
+  <wdbElement name="wdb_BonusAmount1" type="integer" />
+  <wdbElement name="wdb_BonusStat2" type="integer" />
+  <wdbElement name="wdb_BonusAmount2" type="integer" />
+  <wdbElement name="wdb_BonusStat3" type="integer" />
+  <wdbElement name="wdb_BonusAmount3" type="integer" />
+  <wdbElement name="wdb_BonusStat4" type="integer" />
+  <wdbElement name="wdb_BonusAmount4" type="integer" />
+  <wdbElement name="wdb_BonusStat5" type="integer" />
+  <wdbElement name="wdb_BonusAmount5" type="integer" />
+  <wdbElement name="wdb_BonusStat6" type="integer" />
+  <wdbElement name="wdb_BonusAmount6" type="integer" />
+  <wdbElement name="wdb_BonusStat7" type="integer" />
+  <wdbElement name="wdb_BonusAmount7" type="integer" />
+  <wdbElement name="wdb_BonusStat8" type="integer" />
+  <wdbElement name="wdb_BonusAmount8" type="integer" />
+  <wdbElement name="wdb_BonusStat9" type="integer" />
+  <wdbElement name="wdb_BonusAmount9" type="integer" />
+  <wdbElement name="wdb_BonusStat10" type="integer" />
+  <wdbElement name="wdb_BonusAmount10" type="integer" />
+  <!-- damage; consists of wdb_MinDamage1 wdb_MaxDamage1 wdb_DamageType1 -->
+  <!-- used as INT inside items.scp -->
+  <wdbElement name="wdb_MinDamage1" type="single" />
+  <wdbElement name="wdb_MaxDamage1" type="single" />
+  <wdbElement name="wdb_DamageType1" type="integer" />
+  <!-- damage; consists of wdb_MinDamage2 wdb_MaxDamage2 wdb_DamageType2 -->
+  <!-- used as INT inside items.scp -->
+  <wdbElement name="wdb_MinDamage2" type="single" />
+  <wdbElement name="wdb_MaxDamage2" type="single" />
+  <wdbElement name="wdb_DamageType2" type="integer" />
+  <!-- damage; consists of wdb_MinDamage3 wdb_MaxDamage3 wdb_DamageType3 -->
+  <!-- used as INT inside items.scp -->
+  <wdbElement name="wdb_MinDamage3" type="single" />
+  <wdbElement name="wdb_MaxDamage3" type="single" />
+  <wdbElement name="wdb_DamageType3" type="integer" />
+  <!-- damage; consists of wdb_MinDamage4 wdb_MaxDamage4 wdb_DamageType4 -->
+  <!-- used as INT inside items.scp -->
+  <wdbElement name="wdb_MinDamage4" type="single" />
+  <wdbElement name="wdb_MaxDamage4" type="single" />
+  <wdbElement name="wdb_DamageType4" type="integer" />
+  <!-- damage; consists of wdb_MinDamage1 wdb_MaxDamage1 wdb_DamageType1 -->
+  <!-- used as INT inside items.scp -->
+  <wdbElement name="wdb_MinDamage5" type="single" />
+  <wdbElement name="wdb_MaxDamage5" type="single" />
+  <wdbElement name="wdb_DamageType5" type="integer" />
+  <wdbElement name="wdb_Armor" type="integer" />
+  <wdbElement name="wdb_HolyResistance" type="integer" />
+  <wdbElement name="wdb_FireResistance" type="integer" />
+  <wdbElement name="wdb_NatureResistance" type="integer" />
+  <wdbElement name="wdb_FrostResistance" type="integer" />
+  <wdbElement name="wdb_ShadowResistance" type="integer" />
+  <wdbElement name="wdb_ArcanceResistance" type="integer" />
+  <!-- introduced with 1.8
+       Have no idea what this value is about...
+       May even be float, sry about this
+  -->
+  <wdbElement name="wdb_Speed" type="integer" />
+  <!-- spell; consists of
+   wdb_SpellID1 wdb_Spelltrigger1 wdb_SpellCharges1 wdb_SpellCooldown1
+   wdb_SpellCategory1 wdb_SpellCategoryCooldown1-->
+  <wdbElement name="wdb_SpellID1" type="integer" />
+  <wdbElement name="wdb_Spelltrigger1" type="integer" />
+  <wdbElement name="wdb_SpellCharges1" type="integer" />
+  <wdbElement name="wdb_SpellCooldown1" type="integer" />
+  <wdbElement name="wdb_SpellCategory1" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown1" type="integer" />
+  <!-- spell; consists of
+   wdb_SpellID1 wdb_Spelltrigger2 wdb_SpellCharges2 wdb_SpellCooldown2
+   wdb_SpellCategory2 wdb_SpellCategoryCooldown2 -->
+  <wdbElement name="wdb_SpellID2" type="integer" />
+  <wdbElement name="wdb_Spelltrigger2" type="integer" />
+  <wdbElement name="wdb_SpellCharges2" type="integer" />
+  <wdbElement name="wdb_SpellCooldown2" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown2" type="integer" />
+  <wdbElement name="wdb_SpellCategory2" type="integer" />
+  <!-- spell; consists of
+   wdb_SpellID1 wdb_Spelltrigger3 wdb_SpellCharges3 wdb_SpellCooldown3
+   wdb_SpellCategory3 wdb_SpellCategoryCooldown3 -->
+  <wdbElement name="wdb_SpellID3" type="integer" />
+  <wdbElement name="wdb_Spelltrigger3" type="integer" />
+  <wdbElement name="wdb_SpellCharges3" type="integer" />
+  <wdbElement name="wdb_SpellCooldown3" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown3" type="integer" />
+  <wdbElement name="wdb_SpellCategory3" type="integer" />
+  <!-- spell; consists of
+   wdb_SpellID1 wdb_Spelltrigger4 wdb_SpellCharges4 wdb_SpellCooldown4
+   wdb_SpellCategory4 wdb_SpellCategoryCooldown4 -->
+  <wdbElement name="wdb_SpellID4" type="integer" />
+  <wdbElement name="wdb_Spelltrigger4" type="integer" />
+  <wdbElement name="wdb_SpellCharges4" type="integer" />
+  <wdbElement name="wdb_SpellCooldown4" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown4" type="integer" />
+  <wdbElement name="wdb_SpellCategory4" type="integer" />
+  <!-- spell; consists of
+   wdb_SpellID1 wdb_Spelltrigger5 wdb_SpellCharges5 wdb_SpellCooldown5
+   wdb_SpellCategory5 wdb_SpellCategoryCooldown5 -->
+  <wdbElement name="wdb_SpellID5" type="integer" />
+  <wdbElement name="wdb_Spelltrigger5" type="integer" />
+  <wdbElement name="wdb_SpellCharges5" type="integer" />
+  <wdbElement name="wdb_SpellCooldown5" type="integer" />
+  <wdbElement name="wdb_SpellCategoryCooldown5" type="integer" />
+  <wdbElement name="wdb_SpellCategory5" type="integer" />
+  <wdbElement name="wdb_BindType" type="integer" />
+  <wdbElement name="wdb_Unk180_02" type="integer" />
+  <wdbElement name="wdb_Unk180_03" type="integer" />
+  <wdbElement name="wdb_Description" type="varChar" />
+  <wdbElement name="wdb_PageText" type="integer" />
+  <wdbElement name="wdb_LanguageID" type="integer" />
+  <wdbElement name="wdb_PageMaterial" type="integer" />
+  <wdbElement name="wdb_StartQuestID" type="integer" />
+  <wdbElement name="wdb_LockID" type="integer" />
+  <!-- material -->
+  <wdbElement name="wdb_Material" type="integer" />
+  <!-- sheath -->
+  <wdbElement name="wdb_SheathType" type="integer" />
+  <wdbElement name="wdb_Unk110" type="integer" />
+  <wdbElement name="wdb_Block" type="integer" />
+  <wdbElement name="wdb_ItemSet" type="integer" />
+  <!-- durability -->
+  <wdbElement name="wdb_MaxDurability" type="integer" />
+  <!-- introduced with 1.8
+       Have no idea what this value is about...
+       May even be float, sry about this
+  -->
+  <wdbElement name="wdb_Unk180_04" type="single" />
+  <wdbElement name="wdb_Unk190_01" type="single" />
+</wdbDef>

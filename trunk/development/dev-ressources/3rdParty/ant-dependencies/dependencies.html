@@ -1,0 +1,243 @@
+<html><head>
+<meta http-equiv="Content-Language" content="en-us"><title>Dependencies Task</title>
+
+<link rel="stylesheet" type="text/css" href="dependencies_dateien/antmanual.css"></head>
+
+<body>
+
+<h2><a name="copy">Dependencies</a></h2>
+<h3>Description</h3>
+<p>Manages a set of external dependencies which may be downloaded from a remote repository.
+This set of files is referred to as a <i>dependency set</i>.
+Uses a local cache to avoid repeated downloads.</p>
+
+<p>By default, missing files are downloaded from the
+<a href="http://www.ibiblio.org/maven">http://www.ibiblio.org/maven</a> repository. This may be changed by specifying one
+or more nested repository elements. It can also be can be changed on a task-by-task basis through use of the
+<tt>repositoryList</tt> attribute, or globally by defining the system property <tt>ant.remote.repository</tt>
+(deprecated).
+In the latter cases, the value is interpreted as a comma separated list
+of http URLs pointing to one or more ibiblio-like repositories. Each
+repository will be searched in order until the dependency is found.
+If the dependency cannot be found in any of the repositories, the task
+will log an error message,
+which will optionally include a web site from which the user can
+manually download it (if one is specified).</p>
+
+<p>The default location for the local cache is <tt>~/.maven/repository</tt>, which permits projects using this task to share
+cached dependencies with projects using <a href="http://www.httpunit.org/doc/maven.apache.org">Maven</a>. This can be changed by defining the system
+property <tt>ant.dependencies.cache</tt></p>
+
+<h3>Setup</h3>
+Download the <a href="http://prdownloads.sourceforge.net/httpunit/ant-dependencies-0.5.zip?download">zip archive</a> and extract
+the <tt>ant-dependencies.jar</tt> to your ant <tt>lib</tt> directory. Include in your build.xml the following line:
+<pre>&lt;typedef resource="dependencies.properties" /&gt;</pre>
+Alternately, place the jar at some known location and specify the <tt>classpath</tt> attribute in the typedef to point to the jar.
+
+
+<h3>Parameters</h3>
+<table border="1" cellpadding="2" cellspacing="0">
+  <tbody><tr>
+    <td valign="top"><b>Attribute</b></td>
+    <td valign="top"><b>Description</b></td>
+    <td align="center" valign="top"><b>Required</b></td>
+  </tr>
+
+  <tr>
+    <td valign="top">repositoryList</td>
+    <td valign="top">A comma-separated list of HTTP URLs, describing the repositories to search for any missing artifacts.</td>
+    <td align="center" valign="top">No.</td>
+  </tr>
+  <tr>
+    <td valign="top">pathId</td>
+    <td valign="top">The name of a <a href="http://ant.apache.org/manual/using.html#path">path-like structure</a> which includes the files
+    in the dependency set. Most commonly used to specify a classpath for compilation or execution.</td>
+    <td align="center" valign="top">No.</td>
+  </tr>
+  <tr>
+    <td valign="top">fileSetId</td>
+    <td valign="top">The name of a <a href="http://ant.apache.org/manual/CoreTypes/fileset.html">FileSet</a> consisting of
+    the members of the dependency set. Often used to specify a source for a copy operation.</td>
+    <td align="center" valign="top">No.</td>
+  </tr>
+  <tr>
+    <td valign="top">verbose</td>
+    <td valign="top">If set, the 'get' task downloading dependencies will log its progress.</td>
+    <td align="center" valign="top">No. Defaults to 'false.'</td>
+  </tr>
+</tbody></table>
+<h3>Parameters specified as nested elements</h3>
+
+<h4>dependency</h4>
+ <p>Each file to be included must be specified by a <i>dependency</i> element:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+  <tbody><tr>
+    <td valign="top"><b>Attribute</b></td>
+    <td valign="top"><b>Description</b></td>
+    <td align="center" valign="top"><b>Required</b></td>
+  </tr>
+
+  <tr>
+    <td valign="top">group</td>
+    <td valign="top">The project group which produced the dependency.</td>
+    <td align="center" valign="top">Yes.</td>
+  </tr>
+  <tr>
+    <td valign="top">version</td>
+    <td valign="top">The version of the dependency. Syntax is variable.</td>
+    <td align="center" valign="top">Yes, unless the <tt>latest</tt> attribute is specified.</td>
+  </tr>
+  <tr>
+    <td valign="top">type</td>
+    <td valign="top">The type of the dependency.</td>
+    <td align="center" valign="top">No. Defaults to <tt>jar</tt>.</td>
+  </tr>
+  <tr>
+    <td valign="top">artifact</td>
+    <td valign="top">The unique id for a dependency produced by the project group.</td>
+    <td align="center" valign="top">No. Defaults to the same as the group attribute.</td>
+  </tr>
+  <tr>
+    <td valign="top">latest</td>
+    <td valign="top">If true, asks the repository to select the latest version for this dependency.</td>
+    <td align="center" valign="top">No.</td>
+  </tr>
+  <tr>
+    <td valign="top">webSite</td>
+    <td valign="top">The website from which the dependency could be manually downloaded.</td>
+    <td align="center" valign="top">No. Advisory only.</td>
+  </tr>
+  <tr>
+    <td valign="top">if</td>
+    <td valign="top">The name of a condition which must be defined for the dependency to be included in the dependency set.</td>
+    <td align="center" valign="top">No.</td>
+  </tr>
+  <tr>
+    <td valign="top">unless</td>
+    <td valign="top">The name of a condition which, if defined, will exclude the dependency from the dependency set.</td>
+    <td align="center" valign="top">No.</td>
+  </tr>
+</tbody></table>
+
+<h3>alternative repositories</h3>
+ <p>The default behavior is to search the maven ibiblio repository, or any other repository structured the same way. You can
+define your own repository type by implementing
+<a href="http://www.httpunit.org/doc/api/org/apache/tools/ant/taskdefs/optional/dependencies/Repository.html">Repository</a>
+or extending <a href="http://www.httpunit.org/doc/api/org/apache/tools/ant/taskdefs/optional/dependencies/HttpRepository.html">HttpRepository</a>.
+A maven-repository type is already defined, and may be used as an alternative way to specify repository locations:
+
+</p><h4>maven-repository</h4>
+Defines a repository with entries using the structure <tt>&lt;group&gt;/&lt;type&gt;s/&lt;artifact&gt;-&lt;version&gt;.&lt;type&gt;</tt>.
+<table border="1" cellpadding="2" cellspacing="0">
+  <tbody><tr>
+    <td valign="top"><b>Attribute</b></td>
+    <td valign="top"><b>Description</b></td>
+    <td align="center" valign="top"><b>Required</b></td>
+  </tr>
+
+  <tr>
+    <td valign="top">url</td>
+    <td valign="top">The location of the ibiblio-compatible repository.</td>
+    <td align="center" valign="top">No. Defaults to <tt>http://www.ibiblio.org/maven/</tt>.</td>
+  </tr>
+</tbody></table>
+
+
+<h3>Examples</h3>
+<blockquote>
+  <p></p><pre>&lt;dependencies pathId="base.classpath"&gt;
+    &lt;dependency group="rhino"      version="1.5R4.1" /&gt;
+    &lt;dependency group="junit"      version="3.8.1" /&gt;
+    &lt;dependency group="nekohtml"   version="0.9.1" unless="use.jtidy"/&gt;
+    &lt;dependency group="servletapi" version="2.3" /&gt;
+    &lt;dependency group="jtidy"      version="4aug2000r7-dev" if="use.jtidy"/&gt;
+    &lt;dependency group="xerces"     version="2.2.1" artifact="xmlParserAPIs"/&gt;
+    &lt;dependency group="xerces"     version="2.6.0" artifact="xercesImpl"/&gt;
+&lt;/dependencies&gt;
+&lt;javac srcdir="src" destdir="classes"&gt;
+    &lt;classpath refid="base.classpath" /&gt;
+&lt;/javac&gt;
+</pre><p></p>
+</blockquote>
+<p>Creates a classpath named "base.classpath" unconditionally including <tt>rhino-1.5R4.1.jar</tt>, <tt>junit-3.8.1.jar</tt>,
+<tt>servletapi-2.3.jar</tt>, <tt>xmlParserAPIs-2.2.1.jar</tt>, and <tt>xercesImpl-2.6.0.jar</tt> (the last two from the xerces project).
+If the property "use.jtidy"
+is defined, also includes <tt>jtidy-4aug2000r7-dev.jar</tt>; otherwise includes <tt>nekohtml-0.9.1.jar</tt>. Will download the
+files from the default repository at <tt>http://www.ibiblio.org/maven</tt> if necessary. Uses the created classpath to compile the files
+in the <tt>src</tt> directory.</p>
+
+<blockquote>
+  <p></p><pre>&lt;typedef name="private-repository" classname="com.mywork.types.PrivateRepository"/&gt;
+&lt;dependencies pathId="base.classpath" fileSetId="common.files" &gt;
+    &lt;private-repository server="production" /&gt;
+    &lt;maven-repository&gt;
+    &lt;dependency group="rhino"      version="1.5R4.1" /&gt;
+    &lt;dependency group="junit"      version="3.8.1" /&gt;
+&lt;/dependencies&gt;
+</pre><p></p>
+</blockquote>
+<p>Creates a classpath named "base.classpath" and a fileset named "common.files" searching first in a custom private repository
+and using the ibiblio repository as a backup.</p>
+
+
+<blockquote>
+  <p></p><pre>&lt;typedef name="private-repository" classname="com.mywork.types.PrivateRepository"/&gt;
+&lt;dependencies pathId="allamagoosa.classpath" &gt;
+    &lt;private-repository server="production" /&gt;
+    &lt;dependency group="allamagoosa" version="1.0.1" type="distribution-zip"&gt;
+        &lt;patternset&gt;
+            &lt;include name="lib/*.jar"/&gt;
+        &lt;/patternset&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</pre><p></p>
+</blockquote>
+<p>Downloads the distribution for the allamagoosa project as a zip file, extracts any .jar files found in its lib directory,
+and places them (not the distribution) in the classpath "allamagoosa.classpath".</p>
+
+
+<blockquote>
+  <p></p><pre>&lt;dependencies fileSetId="common.files" &gt;
+    &lt;dependency group="rhino"      version="1.5R4.1" /&gt;
+    &lt;dependency group="junit"      version="3.8.1" /&gt;
+&lt;/dependencies&gt;
+&lt;copy todir="${lib}"&gt;
+    &lt;mapper&gt;
+        &lt;dependencies-mapper&gt;
+    &lt;/mapper&gt;
+&lt;/copy&gt;
+</pre><p></p>
+</blockquote>
+<p>Creates a fileset named "common.files" and copies the selected jars ${lib} directory, stripping off the version information
+from their names.</p>
+
+<hr>
+<h4>History</h4>
+<dl>
+<dt>28-Jul-05 <b>0.5</b></dt><dd>Dependencies are now treated as archives if the contain a nested pattern set.<br>
+                          Added verbose flag. Feature supplied by Maxwell Grender-Jones.<br>
+Http authorization is now supported for urls containing user:password@
+elements. Feature supplied by Maxwell Grender-Jones.<br>
+Maven MD5 validation now handles checksum files with additional text.
+Problem and fix reported by Kim Pepper<br>
+                          Maven repository will now select the highest version number if <tt>latest</tt> is specified.</dd>
+<dt>17-Dec-04 <b>0.4</b></dt><dd>Added <tt>latest</tt> attribute to permit repositories to select versions dynamically.<br>
+                          Removed <tt>name</tt> attribute.<br>
+                          Added ability to specify local cache directory<br>
+                          Added MD5 validation for Maven repository</dd>
+<dt>15-Nov-04 <b>0.3</b></dt><dd>Added repository types. Thanks to Steve Loughran for the idea.<br>
+                          Added dependencies-mapper<br>
+                          Note the change in instructions: you must now use <tt>typedef</tt> rather than <tt>taskdef</tt></dd>
+<dt>29-Sep-04 <b>0.2</b></dt><dd>Added repositoryList attribute.</dd>
+<dt>26-Sep-04 <b>0.1.1</b></dt><dd>Now creates directories before loading a file. Problem and fix reported by Hani Naguib</dd>
+<dt>22-Sep-04 <b>0.1</b></dt><dd>Initial release</dd>
+</dl>
+
+<hr>
+<div style="position: relative;">
+  <div>Copyright © 2004-2005, Russell Gold</div>
+  <div style="text-align: right; position: absolute; top: 0pt; right: 70px;">Hosted by <img src="dependencies_dateien/sflogo.png" alt="SourceForge Logo" naturalsizeflag="0" align="top" border="0" height="31" width="88"></div>
+</div>
+
+</body></html>

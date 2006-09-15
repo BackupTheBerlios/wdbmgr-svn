@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Config file, that describes the format of a WDB file.<br/>
+
+  Changes to this file will affect the application!
+  !Beware!
+
+  possible types - internal mapping        - comment
+  -
+  tinyInt        - java.sql.Types.TinyInt    1 byte signed int
+  smallInt       - java.sql.Types.SmallInt   Short (2 byte signed int)
+  integer        - java.sql.Types.Int        Integer (4 byte signed int)
+  varChar        - java.sql.Types.VARCHAR    string, ends with NULL
+  bigIntHex      - java.sql.Types.NUMERIC    4 byte int value, gets hex encoded
+                                             after read from WDB (Stored as
+                                             HEX inside database)
+  single         - java.sql.Types.FLOAT      4 byte float, single precision
+                                             Stored inside database as Varchar()
+                                             to preserve precision.
+  char, size     - java.sql.Types.CHAR       string, fixed width
+                   eg:   <wdbElement name="wdb_Text" type="char" size="20"/>
+                   BEWARE:
+                   Internal encoding of WDB is UTF-8 *but* you can only specify the
+                   number of bytes here. This can significantly differ
+                   (eg german "ß" is 2 bytes)
+  -
+  
+  For PRE-1.6.0, the WDB files contain an ID of 16 bytes
+  1.6.0 - ID is 20 bytes
+  
+  Please use "skipBytes" to set the length of the ID
+  (Thanks to andrikos for this hint.)
+  
+  Thanks to John for fixing the XML files to work with 1.10.
+  
+
+  kizura zgabi, >= 03/2005
+-->
+<wdbDef>
+  <wdbId name="npccache" />
+  <skipBytes numBytes="20" />
+  <wdbElement name="wdb_ID" type="integer" />
+  <wdbElement name="wdb_RecLen" type="integer" />
+  <wdbElement name="wdb_Unk3" type="single" />
+  <wdbElement name="wdb_Text4" type="varChar" />
+  <wdbElement name="wdb_Text5" type="varChar" />
+  <wdbElement name="wdb_Unk6" type="integer" />
+  <wdbElement name="wdb_Unk7" type="integer" />
+  <wdbElement name="wdb_Unk8" type="integer" />
+  <wdbElement name="wdb_Unk9" type="integer" />
+  <wdbElement name="wdb_Unk10" type="integer" />
+  <wdbElement name="wdb_Unk11" type="integer" />
+  <wdbElement name="wdb_Unk12" type="integer" />
+  <wdbElement name="wdb_Unk13" type="single" />
+  <wdbElement name="wdb_Text14" type="varChar" />
+  <wdbElement name="wdb_Text15" type="varChar" />
+  <wdbElement name="wdb_Unk16" type="integer" />
+  <wdbElement name="wdb_Unk17" type="integer" />
+  <wdbElement name="wdb_Unk18" type="integer" />
+  <wdbElement name="wdb_Unk19" type="integer" />
+  <wdbElement name="wdb_Unk20" type="integer" />
+  <wdbElement name="wdb_Unk21" type="integer" />
+  <wdbElement name="wdb_Unk22" type="integer" />
+  <wdbElement name="wdb_Unk23" type="single" />
+  <wdbElement name="wdb_Text24" type="varChar" />
+  <wdbElement name="wdb_Text25" type="varChar" />
+  <wdbElement name="wdb_Unk26" type="integer" />
+  <wdbElement name="wdb_Unk27" type="integer" />
+  <wdbElement name="wdb_Unk28" type="integer" />
+  <wdbElement name="wdb_Unk29" type="integer" />
+  <wdbElement name="wdb_Unk30" type="integer" />
+  <wdbElement name="wdb_Unk31" type="integer" />
+  <wdbElement name="wdb_Unk32" type="integer" />
+  <wdbElement name="wdb_Unk33" type="single" />
+  <wdbElement name="wdb_Text34" type="varChar" />
+  <wdbElement name="wdb_Text35" type="varChar" />
+  <wdbElement name="wdb_Unk36" type="integer" />
+  <wdbElement name="wdb_Unk37" type="integer" />
+  <wdbElement name="wdb_Unk38" type="integer" />
+  <wdbElement name="wdb_Unk39" type="integer" />
+  <wdbElement name="wdb_Unk40" type="integer" />
+  <wdbElement name="wdb_Unk41" type="integer" />
+  <wdbElement name="wdb_Unk42" type="integer" />
+  <wdbElement name="wdb_Unk43" type="single" />
+  <wdbElement name="wdb_Text44" type="varChar" />
+  <wdbElement name="wdb_Text45" type="varChar" />
+  <wdbElement name="wdb_Unk46" type="integer" />
+  <wdbElement name="wdb_Unk47" type="integer" />
+  <wdbElement name="wdb_Unk48" type="integer" />
+  <wdbElement name="wdb_Unk49" type="integer" />
+  <wdbElement name="wdb_Unk50" type="integer" />
+  <wdbElement name="wdb_Unk51" type="integer" />
+  <wdbElement name="wdb_Unk52" type="integer" />
+  <wdbElement name="wdb_Unk53" type="single" />
+  <wdbElement name="wdb_Text54" type="varChar" />
+  <wdbElement name="wdb_Text55" type="varChar" />
+  <wdbElement name="wdb_Unk56" type="integer" />
+  <wdbElement name="wdb_Unk57" type="integer" />
+  <wdbElement name="wdb_Unk58" type="integer" />
+  <wdbElement name="wdb_Unk59" type="integer" />
+  <wdbElement name="wdb_Unk60" type="integer" />
+  <wdbElement name="wdb_Unk61" type="integer" />
+  <wdbElement name="wdb_Unk62" type="integer" />
+  <wdbElement name="wdb_Unk63" type="single" />
+  <wdbElement name="wdb_Text64" type="varChar" />
+  <wdbElement name="wdb_Text65" type="varChar" />
+  <wdbElement name="wdb_Unk66" type="integer" />
+  <wdbElement name="wdb_Unk67" type="integer" />
+  <wdbElement name="wdb_Unk68" type="integer" />
+  <wdbElement name="wdb_Unk69" type="integer" />
+  <wdbElement name="wdb_Unk70" type="integer" />
+  <wdbElement name="wdb_Unk71" type="integer" />
+  <wdbElement name="wdb_Unk72" type="integer" />
+  <wdbElement name="wdb_Unk73" type="single" />
+  <wdbElement name="wdb_Text74" type="varChar" />
+  <wdbElement name="wdb_Text75" type="varChar" />
+  <wdbElement name="wdb_Unk76" type="integer" />
+  <wdbElement name="wdb_Unk77" type="integer" />
+  <wdbElement name="wdb_Unk78" type="integer" />
+  <wdbElement name="wdb_Unk79" type="integer" />
+  <wdbElement name="wdb_Unk80" type="integer" />
+  <wdbElement name="wdb_Unk81" type="integer" />
+  <wdbElement name="wdb_Unk82" type="integer" />
+</wdbDef>

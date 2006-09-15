@@ -1,0 +1,18 @@
+@echo off
+@rem Script to set the CLASSPATH for the generation of the CASTOR
+@rem classes to process the XML config file
+@rem First Release: 2005 March 13
+@rem Latest Change: 
+echo Please adjust the environment variable JAR_RES according your java arcive resources
+set jar_res=%JAR_REPOSITORY%
+echo JAR_RES set to '%JAR_RES%'
+set classpath=%CLASSPATH%;%jar_res%\xerces\xerces-2_6_2\xercesImp.jar
+set classpath=%CLASSPATH%;%jar_res%\xerces\xerces-2_6_2\xml-apis.jar
+set classpath=%CLASSPATH%;%jar_res%\xerces\xerces-2_6_2\resolver.jar
+set classpath=%CLASSPATH%;%jar_res%\castor\castor-0.9.6\castor-0.9.6.jar
+set classpath=%CLASSPATH%;%jar_res%\logging-log4j-1.2.9\dist\lib\log4j-1.2.9.jar
+set classpath=%CLASSPATH%;%jar_res%\commons-logging-1.0.4\
+rem set classpath=%jar_res%\Castor\castor-0.9.3.9\xerces.jar;%CLASSPATH%
+rem set classpath=%1\castor-0.9.3.9.jar;%CLASSPATH%
+rem set classpath=%1\xerces.jar;%CLASSPATH%
+
